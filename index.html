@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NK Food Agro — Premium Makhana, Dry Fruits & Gift Hampers</title>
+<meta name="description" content="Shop premium makhana, dry fruits and gift hampers from NK Food Agro.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="royal-intro" id="royalIntro" aria-hidden="true">
+  <div class="royal-curtain left"></div><div class="royal-curtain right"></div>
+  <div class="royal-center">
+    <div class="royal-crown">♛</div><div class="royal-logo">NK FOOD AGRO</div>
+    <div class="royal-subtitle">PREMIUM • NATURAL • ROYAL</div><div class="royal-line">✦</div>
+  </div>
+  <div class="royal-sparkles"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+</div>
+
+<div class="topbar">🌿 100% Natural &nbsp; • &nbsp; Farm Fresh &nbsp; • &nbsp; COD Available</div>
+<header class="header">
+  <a class="brand" href="#"><span class="brand-mark">NK</span><span><b>NK FOOD AGRO</b><small>Good Food · Better Tomorrow</small></span></a>
+  <nav><a href="#shop">Shop</a><a href="#categories">Categories</a><a href="#benefits">Why Us</a><a href="#about">About</a></nav>
+  <button class="cart-btn" onclick="openCart()">Cart <span id="cartCount">0</span></button>
+</header>
+
+<main>
+<section class="hero reveal">
+  <div class="hero-copy">
+    <span class="eyebrow">PREMIUM • NATURAL • HEALTHY</span>
+    <h1>Goodness packed<br><em>for every occasion.</em></h1>
+    <p>Premium makhana, wholesome dry fruits and beautifully curated gift hampers — carefully sourced and packed for you.</p>
+    <div class="hero-actions"><a href="#shop" class="btn primary">Explore Collection →</a><a href="#categories" class="text-btn">Shop by Category</a></div>
+    <div class="trust-row"><span>✓ Quality Selected</span><span>✓ Hygienic Packing</span><span>✓ COD Available</span></div>
+  </div>
+  <div class="hero-product">
+    <div class="leaf-badge">FARM<br>FRESH</div>
+    <div class="image-frame hero-frame"><img src="assets/hero.jpg" data-fallback="assets/makhana.png" alt="NK Food Agro Premium Collection" class="smart-image"></div>
+    <div class="floating-card"><strong>Premium</strong><span>NK Food Agro</span></div>
+  </div>
+</section>
+
+<section class="strip reveal">
+  <div>🌱 <b>Natural Goodness</b><small>Carefully selected</small></div>
+  <div>🚜 <b>Trusted Sourcing</b><small>Quality focused</small></div>
+  <div>✨ <b>Premium Packing</b><small>Freshness first</small></div>
+  <div>📦 <b>Fast Delivery</b><small>Across India</small></div>
+</section>
+
+<section id="categories" class="category-section reveal">
+  <div class="section-head centered"><span class="eyebrow">SHOP BY CATEGORY</span><h2>Find your favourite</h2><p>Choose a category or view our complete collection.</p></div>
+  <div class="category-grid">
+    <button class="category-card" onclick="filterProducts('Makhana')"><span>🌿</span><b>Makhana</b><small>Crunchy & wholesome</small><em>Shop Now →</em></button>
+    <button class="category-card" onclick="filterProducts('Dry Fruits')"><span>🥜</span><b>Dry Fruits</b><small>Premium everyday nutrition</small><em>Shop Now →</em></button>
+    <button class="category-card" onclick="filterProducts('Gift Hampers')"><span>🎁</span><b>Gift Hampers</b><small>Curated for every occasion</small><em>Shop Now →</em></button>
+  </div>
+</section>
+
+<section id="shop" class="section shop-section reveal">
+  <div class="section-head">
+    <div><span class="eyebrow">OUR COLLECTION</span><h2>Premium Products</h2></div>
+    <p>Browse everything or select a category to find exactly what you need.</p>
+  </div>
+  <div class="filter-bar">
+    <button class="filter active" data-category="All" onclick="filterProducts('All')">View All</button>
+    <button class="filter" data-category="Makhana" onclick="filterProducts('Makhana')">Makhana</button>
+    <button class="filter" data-category="Dry Fruits" onclick="filterProducts('Dry Fruits')">Dry Fruits</button>
+    <button class="filter" data-category="Gift Hampers" onclick="filterProducts('Gift Hampers')">Gift Hampers</button>
+  </div>
+  <div id="productGrid" class="product-grid"></div>
+</section>
+
+<section id="benefits" class="benefits reveal">
+  <div class="benefit-image"><img src="assets/benefits.png" data-fallback="assets/makhana.png" loading="lazy" alt="NK Food Agro quality products" class="smart-image"></div>
+  <div class="benefit-copy"><span class="eyebrow">WHY CHOOSE NK FOOD AGRO?</span><h2>Good food leads to a <em>better tomorrow.</em></h2><p>We bring carefully selected products to your table with a focus on quality, taste and presentation.</p>
+  <div class="benefit-list"><div><span>🌿</span><section><b>Quality Selected</b><small>Products selected with care for everyday enjoyment.</small></section></div><div><span>🚜</span><section><b>Trusted Sourcing</b><small>We focus on reliable and responsible sourcing.</small></section></div><div><span>💚</span><section><b>Wholesome Choices</b><small>Great options for home, office and gifting.</small></section></div><div><span>✨</span><section><b>Premium Presentation</b><small>Neatly packed for freshness and gifting.</small></section></div></div></div>
+</section>
+
+<section class="offer reveal"><div><span class="eyebrow">SPECIAL COLLECTION</span><h2>Something for every occasion.</h2><p>Shop snacks for yourself or create a thoughtful gift.</p></div><a href="#shop" class="btn light">View All Products →</a></section>
+
+<section id="reviews" class="section reviews reveal"><div class="section-head centered"><span class="eyebrow">CUSTOMER LOVE</span><h2>Loved for the quality</h2></div><div class="review-grid"><blockquote>“Fresh, crunchy and nicely packed. Great for evening snacking.”<footer>★★★★★<br><b>— Verified Customer</b></footer></blockquote><blockquote>“The packaging looks premium and the products arrived fresh.”<footer>★★★★★<br><b>— Verified Customer</b></footer></blockquote><blockquote>“A lovely option for keeping at home and gifting.”<footer>★★★★★<br><b>— Verified Customer</b></footer></blockquote></div></section>
+
+<section id="about" class="about reveal"><span class="eyebrow">ABOUT NK FOOD AGRO</span><h2>Real Goodness. Beautifully Packed.</h2><p>At NK Food Agro, we aim to bring quality food products from trusted sources to your table — for everyday snacking and special moments.</p></section>
+</main>
+
+<footer class="footer"><div><div class="brand"><span class="brand-mark">NK</span><span><b>NK FOOD AGRO</b><small>Good Food · Better Tomorrow</small></span></div><p>Premium makhana, dry fruits and gift hampers.</p></div><div><h4>Quick Links</h4><a href="#shop">Shop</a><a href="#categories">Categories</a><a href="#about">About</a></div><div><h4>Customer Care</h4><a href="#">Shipping Policy</a><a href="#">Returns & Refunds</a><a href="#">Contact Us</a></div><div><h4>Contact</h4><p>📞 +91 ------</p><p>✉️ care@nkfoodagro.com</p></div></footer>
+
+<!-- PRODUCT DETAILS MODAL -->
+<div class="modal-overlay" id="productModal" onclick="closeProduct(event)">
+  <div class="product-modal" onclick="event.stopPropagation()">
+    <button class="modal-close" onclick="closeProduct()">×</button>
+    <div class="gallery">
+      <div class="main-gallery-image"><img id="detailImage" src="" alt=""></div>
+      <div class="thumbs" id="detailThumbs"></div>
+    </div>
+    <div class="detail-copy">
+      <span id="detailCategory" class="detail-category"></span>
+      <h2 id="detailName"></h2>
+      <div class="detail-price"><strong id="detailPrice"></strong><del id="detailMrp"></del><b id="detailDiscount"></b></div>
+      <p id="detailDescription"></p>
+      <div class="detail-meta"><span id="detailWeight"></span><span>✓ Quality Selected</span><span>✓ COD Available</span></div>
+      <button id="detailCartBtn" class="btn primary full">Add to Cart</button>
+    </div>
+  </div>
+</div>
+
+<!-- CART -->
+<div class="cart-overlay" id="cartOverlay" onclick="closeCart(event)"><aside class="cart" onclick="event.stopPropagation()"><button class="close" onclick="closeCart()">×</button><h2>Your Cart</h2><div id="cartItems"><p class="empty">Your cart is empty.</p></div><div class="cart-total"><span>Total</span><strong id="cartTotal">₹0</strong></div><button class="btn primary full" onclick="checkout()">Proceed to Checkout</button><p class="secure">🔒 Secure checkout · COD available</p></aside></div>
+
+<script src="script.js"></script>
+</body>
+</html>
