@@ -4,7 +4,7 @@ window.NK_CONFIG = {
   // =========================
   // SUPABASE
   // =========================
-  supabaseUrl: "https://hyxoudlautuqhqlbhnzy.supabase.co",
+  supabaseUrl: "https://hyxoudlautquhqlbhnzy.supabase.co",
 
   // Supabase Dashboard → Project Settings → API
   // Yahan apni Publishable/Anon key paste karo.
