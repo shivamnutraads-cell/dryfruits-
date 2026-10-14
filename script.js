@@ -1076,7 +1076,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const rainLayer = document.getElementById('nkfiRain');
   if (rainLayer && !rainLayer.dataset.ready) {
     rainLayer.dataset.ready = '1';
-    const fruitAssets = ['assets/falling-almond.svg', 'assets/falling-cashew.svg', 'assets/falling-pistachio.svg', 'assets/falling-walnut.svg', 'assets/falling-raisins.svg', 'assets/falling-makhana.svg'];
+    const fruitAssets = ['assets/falling-almond.png', 'assets/falling-cashew.png', 'assets/falling-pistachio.png', 'assets/falling-walnut.png', 'assets/falling-raisins.png', 'assets/falling-makhana.png', 'assets/falling-fig.png', 'assets/falling-dates.png'];
     for (let i = 0; i < 64; i++) {
       const item = document.createElement('img');
       item.className = 'nkfi-rain-item';
