@@ -334,11 +334,17 @@ function renderProducts() {
     ? list.map(productCard).join('')
     : '<p class="empty category-empty">No products found in this category. Please choose another category.</p>';
 
-  document.querySelectorAll('.filter').forEach(b => {
+  document.querySelectorAll('.filter[data-category]').forEach(b => {
     b.classList.toggle('active', String(b.dataset.category || '').trim().toLowerCase() === normalizedCategory);
   });
 
-  loadReviewCounts();
+  // Register newly rendered cards so scroll-reveal CSS cannot leave them invisible.
+  if (typeof setupScrollAnimations === 'function') setupScrollAnimations();
+  try {
+    if (typeof loadReviewCounts === 'function') loadReviewCounts();
+  } catch (error) {
+    console.warn('Review counts unavailable; products are still displayed.', error);
+  }
 }
 
 function filterProducts(cat) {
@@ -357,6 +363,8 @@ function filterProducts(cat) {
       ? list.map(productCard).join('')
       : '<p class="empty category-empty">No products found in this category. Please choose another category.</p>';
   }
+  // Re-observe the new product cards after every category change.
+  if (typeof setupScrollAnimations === 'function') setupScrollAnimations();
   document.querySelectorAll('.filter[data-category]').forEach(button => {
     button.classList.toggle('active', String(button.dataset.category || '').trim().toLowerCase() === normalizedCategory);
   });
