@@ -1072,6 +1072,30 @@ document.addEventListener('DOMContentLoaded', () => {
     );
 
   const fruitIntro = document.getElementById('nkFruitIntro');
+  // Create a shower of real product-asset cutouts and light, puff-shaped makhana.
+  const rainLayer = document.getElementById('nkfiRain');
+  if (rainLayer && !rainLayer.dataset.ready) {
+    rainLayer.dataset.ready = '1';
+    const fruitAssets = ['assets/almonds.png', 'assets/cashews.png', 'assets/dry-fruits-mix.png'];
+    for (let i = 0; i < 38; i++) {
+      const item = document.createElement(i % 5 === 0 ? 'span' : 'img');
+      item.className = 'nkfi-rain-item' + (i % 5 === 0 ? ' makhana-piece' : '');
+      const seed = (i * 37 + 13) % 100;
+      item.style.setProperty('--left', seed + '%');
+      item.style.setProperty('--size', (i % 4 === 0 ? 17 : 22 + (i % 3) * 7) + 'px');
+      item.style.setProperty('--delay', (-((i * 0.19) % 3.8)) + 's');
+      item.style.setProperty('--duration', (3.1 + (i % 6) * 0.42) + 's');
+      item.style.setProperty('--drift', (((i % 7) - 3) * 5) + 'vw');
+      item.style.setProperty('--rot', ((i * 43) % 360) + 'deg');
+      item.style.setProperty('--spin', (((i * 43) % 360) + 260) + 'deg');
+      if (item.tagName === 'IMG') {
+        item.src = fruitAssets[i % fruitAssets.length];
+        item.alt = '';
+        item.loading = 'eager';
+      }
+      rainLayer.appendChild(item);
+    }
+  }
   const hideFruitIntro = () => {
     if (!fruitIntro) return;
     fruitIntro.classList.add('nkfi-hidden');

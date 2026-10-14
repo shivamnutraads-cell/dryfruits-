@@ -184,4 +184,16 @@ html{scroll-behavior:smooth}.locked{overflow:hidden}.header{position:sticky;top:
 @keyframes nkfiGlow{from{transform:scale(.9);opacity:.65}to{transform:scale(1.1);opacity:1}}
 @keyframes nkfiExit{to{opacity:0;visibility:hidden}}
 @media(max-width:600px){.nkfi-fruit.almond{left:3%;top:20%}.nkfi-fruit.cashew{right:3%;top:20%}.nkfi-fruit.makhana{left:4%;bottom:15%}.nkfi-fruit.mix{right:4%;bottom:15%}.nkfi-name{letter-spacing:.07em}.nkfi-caption{font-size:8px}}
+
+/* Dense falling dry-fruit + makhana shower for the opening intro */
+.nkfi-rain{position:absolute;inset:0;z-index:2;overflow:hidden;pointer-events:none}
+.nkfi-rain-item{position:absolute;top:-18vh;left:var(--left);width:var(--size);height:var(--size);opacity:0;object-fit:contain;filter:drop-shadow(0 5px 7px #0005);animation:nkfiRainFall var(--duration) var(--delay) linear infinite;will-change:transform,opacity}
+.nkfi-rain-item.makhana-piece{width:var(--size);height:calc(var(--size)*.78);border-radius:44% 56% 48% 52%;background:radial-gradient(ellipse at 32% 25%,#fffef0 0%,#f4f0dc 42%,#d7d0b8 76%,#b9b19b 100%);box-shadow:inset -2px -2px 3px #8d856c55,0 4px 7px #0004;transform:rotate(var(--rot));}
+.nkfi-rain-item.makhana-piece::after{content:"";position:absolute;inset:20% 25%;border-radius:50%;background:#fff9e8;opacity:.8;filter:blur(1px)}
+.nkfi-fruit{z-index:3}
+.nkfi-brand{z-index:4}
+@keyframes nkfiRainFall{0%{opacity:0;transform:translate3d(0,-5vh,0) rotate(var(--rot)) scale(.7)}8%{opacity:.94}82%{opacity:.9}100%{opacity:0;transform:translate3d(var(--drift),125vh,0) rotate(var(--spin)) scale(1.08)}}
+@media(max-width:600px){.nkfi-rain-item{filter:drop-shadow(0 3px 4px #0004)}}
+@media(prefers-reduced-motion:reduce){.nkfi-rain-item{animation:none!important;display:none}}
+
 @media(prefers-reduced-motion:reduce){.nk-fruit-intro *{animation-duration:.01ms!important;animation-iteration-count:1!important}}
