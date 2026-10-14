@@ -1071,10 +1071,17 @@ document.addEventListener('DOMContentLoaded', () => {
       )
     );
 
-  setTimeout(
-    () => document.getElementById('royalIntro')?.remove(),
-    4200
-  );
+  const fruitIntro = document.getElementById('nkFruitIntro');
+  const hideFruitIntro = () => {
+    if (!fruitIntro) return;
+    fruitIntro.classList.add('nkfi-hidden');
+    fruitIntro.style.animation = 'none';
+    fruitIntro.style.opacity = '0';
+    fruitIntro.style.visibility = 'hidden';
+    setTimeout(() => fruitIntro.remove(), 750);
+  };
+  document.getElementById('nkFruitSkip')?.addEventListener('click', hideFruitIntro);
+  setTimeout(hideFruitIntro, 4200);
 
   setupScrollAnimations();
 });
