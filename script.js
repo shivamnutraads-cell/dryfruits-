@@ -2,7 +2,7 @@ const PRODUCTS = [
   {
     id: 1,
     category: "Makhana",
-    name: "Premium Makhana 250g",
+    name: "Premium Makhana 100gm",
     price: 145,
     mrp: 299,
     discount: "25% OFF",
