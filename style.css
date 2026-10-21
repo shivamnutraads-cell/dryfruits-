@@ -197,3 +197,38 @@ html{scroll-behavior:smooth}.locked{overflow:hidden}.header{position:sticky;top:
 @media(prefers-reduced-motion:reduce){.nkfi-rain-item{animation:none!important;display:none}}
 
 @media(prefers-reduced-motion:reduce){.nk-fruit-intro *{animation-duration:.01ms!important;animation-iteration-count:1!important}}
+
+/* Targeted additions: intro jar, footer licence, order tracking and policy pages */
+.nkfi-jar-wrap{position:absolute;z-index:3;left:50%;top:50%;width:clamp(150px,25vw,275px);transform:translate(-50%,-39%);opacity:.92;filter:drop-shadow(0 18px 22px #0005);animation:nkfiJarFloat 3.8s ease-in-out infinite;pointer-events:none}
+.nkfi-jar{display:block;width:100%;height:auto;max-height:47vh;object-fit:contain}
+.nkfi-brand{margin-top:-7vh;text-shadow:0 2px 10px #102516}
+.nkfi-logo{position:relative;z-index:2}
+@keyframes nkfiJarFloat{0%,100%{transform:translate(-50%,-39%) rotate(-2deg)}50%{transform:translate(-50%,-43%) rotate(2deg)}}
+.footer .fssai-number{font-size:12px;color:#d8d9cc;line-height:1.5}
+.footer a{color:inherit}
+.my-orders{margin:22px 0;text-align:left;max-height:42vh;overflow:auto}
+.my-orders h3{font-family:"Playfair Display",serif;margin:0 0 12px;color:#173c25}
+.my-order{border:1px solid #e7e1d1;border-radius:13px;padding:13px;margin:10px 0;background:#fff}
+.my-order-top{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap}
+.my-order small{display:block;color:#788276;margin-top:5px}
+.my-order p{font-size:13px;color:#536456;line-height:1.5;margin:10px 0}
+.order-status{background:#eef4e9;color:#285634;border-radius:999px;padding:5px 9px;font-size:11px;font-weight:800}
+.order-steps{display:flex;gap:5px;margin-top:12px;flex-wrap:wrap}
+.order-steps span{font-size:10px;color:#8b9187;background:#f1f0e9;padding:5px 7px;border-radius:7px}
+.order-steps span.done{background:#dcebd7;color:#285634;font-weight:700}
+.policy-page{min-height:65vh;padding:70px max(6%,calc((100% - 900px)/2));color:#173c25}
+.policy-page h1{font-family:"Playfair Display",serif;font-size:clamp(34px,5vw,48px);margin:10px 0 20px}
+.policy-page h2{font-family:"Playfair Display",serif;margin:28px 0 8px;font-size:23px}
+.policy-page p,.policy-page li{color:#536456;line-height:1.8}
+.policy-page .updated{font-size:13px;color:#8a928b}
+.policy-footer{padding:25px 6%;background:#173c25;color:#fff;display:flex;gap:20px;justify-content:space-between;flex-wrap:wrap}
+.policy-footer a{color:#fff}
+.thankyou-page{min-height:100vh;display:grid;place-items:center;padding:24px;background:#fbfaf5}
+.thankyou-card{width:min(650px,100%);background:#fff;border:1px solid #e8e2d6;border-radius:24px;padding:clamp(25px,6vw,50px);text-align:center;box-shadow:0 18px 55px #173c2510}
+.thankyou-mark{width:68px;height:68px;border-radius:50%;display:grid;place-items:center;margin:0 auto 18px;background:#e5f0df;color:#285634;font-size:35px}
+.thankyou-card h1{font-family:"Playfair Display",serif;font-size:clamp(32px,5vw,44px);margin:10px 0}
+.thankyou-card p{color:#627064;line-height:1.7}
+.thankyou-summary{margin:22px 0;padding:17px;background:#f6f6ef;border-radius:13px;text-align:left}
+.thankyou-summary div{display:flex;justify-content:space-between;gap:15px;padding:7px 0;color:#526354}
+.thankyou-summary strong{color:#173c25;text-align:right;overflow-wrap:anywhere}
+@media(max-width:600px){.nkfi-jar-wrap{width:clamp(140px,44vw,205px);top:54%;opacity:.75}.nkfi-brand{margin-top:-12vh}.nkfi-jar{max-height:36vh}.policy-page{padding:45px 6%}}

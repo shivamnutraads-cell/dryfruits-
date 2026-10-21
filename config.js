@@ -20,6 +20,9 @@ window.NK_CONFIG = {
   emailjsServiceId: "YOUR_EMAILJS_SERVICE_ID",
   emailjsOrderTemplateId: "YOUR_EMAILJS_ORDER_TEMPLATE_ID",
 
+  // SheetDB endpoint (orders spreadsheet)
+  sheetdbUrl: "https://sheetdb.io/api/v1/h0xetnjez59iu",
+
   // Order notification email
   adminEmail: "care@nkfoodagro.com"
 };

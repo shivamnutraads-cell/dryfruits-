@@ -262,7 +262,7 @@ function escapeHtml(s = '') {
 function imgFallback(el) {
   if (el.dataset.fallbackDone) return;
   el.dataset.fallbackDone = '1';
-  el.src = 'assets/makhana.png';
+  el.src = 'assets/makhana-500g.png';
 }
 
 document.addEventListener('error', e => {
@@ -592,71 +592,97 @@ function closeCheckout(e) {
 
 async function placeOrder(ev) {
   ev.preventDefault();
-
+  const submitButton = ev.target.querySelector('[type="submit"]');
+  if (submitButton) { submitButton.disabled = true; submitButton.textContent = 'Submitting order…'; }
   const form = new FormData(ev.target);
   const data = Object.fromEntries(form.entries());
+  const total = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
+  const orderRef = 'NK' + Date.now().toString().slice(-9) + Math.floor(Math.random() * 90 + 10);
+  const items = cart.map(item => ({ id: item.id, name: item.name, qty: item.qty, price: item.price }));
+  const order = { ...data, order_ref: orderRef, total, items, user_id: currentUser?.id || null };
+  let sheetSaved = false;
+  let supabaseSaved = false;
+  let supabaseOrderId = null;
 
-  const total = cart.reduce(
-    (s, x) => s + x.price * x.qty,
-    0
-  );
+  try {
+    if (cfg.sheetdbUrl) {
+      const sheetRow = {
+        order_ref: orderRef,
+        created_at: new Date().toISOString(),
+        customer_name: data.name,
+        phone: data.phone,
+        email: data.email,
+        pincode: data.pincode,
+        city: data.city,
+        state: data.state,
+        address: data.address,
+        landmark: data.landmark || '',
+        notes: data.notes || '',
+        items: items.map(x => `${x.name} x${x.qty} (₹${x.price})`).join(' | '),
+        total: total,
+        payment_method: 'Cash on Delivery',
+        status: 'new',
+        user_id: order.user_id || ''
+      };
+      const response = await fetch(cfg.sheetdbUrl, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({ data: [sheetRow] })
+      });
+      if (!response.ok) throw new Error('SheetDB returned HTTP ' + response.status);
+      const result = await response.json();
+      sheetSaved = Number(result?.created || result?.updated || 0) > 0 || result?.message === 'Created';
+      if (!sheetSaved) throw new Error('SheetDB did not confirm the row was created');
+    }
+  } catch (err) {
+    console.error('SheetDB order save failed', err);
+  }
 
-  const order = {
-    ...data,
-    total,
-    items: cart.map(x => ({
-      id: x.id,
-      name: x.name,
-      qty: x.qty,
-      price: x.price
-    })),
-    user_id: currentUser?.id || null
-  };
-
-  if (configured && sb) {
+  if (configured && sb && currentUser) {
     try {
-      const { error } = await sb
-        .from('orders')
-        .insert({
-          user_id: order.user_id,
-          customer_name: data.name,
-          email: data.email,
-          phone: data.phone,
-          address: data.address,
-          city: data.city,
-          state: data.state,
-          pincode: data.pincode,
-          landmark: data.landmark || '',
-          notes: data.notes || '',
-          items: order.items,
-          total: order.total,
-          status: 'new'
-        });
-
+      const { data: saved, error } = await sb.from('orders').insert({
+        user_id: order.user_id,
+        customer_name: data.name,
+        email: data.email,
+        phone: data.phone,
+        address: data.address,
+        city: data.city,
+        state: data.state,
+        pincode: data.pincode,
+        landmark: data.landmark || '',
+        notes: data.notes || '',
+        items,
+        total,
+        status: 'new'
+      }).select('id,created_at,status').single();
       if (error) throw error;
-
+      supabaseSaved = true;
+      supabaseOrderId = saved?.id || null;
     } catch (err) {
-      console.warn(
-        'Supabase order save failed',
-        err
-      );
+      console.error('Supabase order save failed', err);
     }
   }
 
-  await sendOrderEmail(order);
+  if (!sheetSaved && !supabaseSaved) {
+    toast('Order save nahi hua. Please internet/connection check karke dobara try karein.');
+    if (submitButton) { submitButton.disabled = false; submitButton.textContent = 'Place Order →'; }
+    return;
+  }
 
+  order.supabase_order_id = supabaseOrderId;
+  await sendOrderEmail(order);
+  try {
+    sessionStorage.setItem('nk_last_order', JSON.stringify({
+      order_ref: orderRef, total, items, created_at: new Date().toISOString(),
+      status: 'new', customer_name: data.name, email: data.email,
+      tracking_available: supabaseSaved
+    }));
+  } catch (_) {}
   cart = [];
   saveCart();
   renderCart();
-
-  closeCheckout();
-  closeCart();
-
-  toast(
-    'Order received! We will contact you shortly.'
-  );
-
   ev.target.reset();
+  window.location.href = 'thank-you.html';
 }
 
 async function sendOrderEmail(o) {
@@ -780,44 +806,51 @@ function closeAccount(e) {
 
 function updateAuthUI() {
   const b = document.getElementById('accountBtn');
-
   if (!b) return;
-
   b.innerHTML = currentUser
-    ? `<span>●</span> ${
-        escapeHtml(
-          currentUser.user_metadata?.name ||
-          currentUser.email?.split('@')[0] ||
-          'Account'
-        )
-      }`
+    ? `<span>●</span> ${escapeHtml(currentUser.user_metadata?.name || currentUser.email?.split('@')[0] || 'Account')}`
     : '<span>G</span> Google Login';
+  const status = document.getElementById('accountStatus');
+  status.innerHTML = currentUser
+    ? `<b>Signed in</b><small>${escapeHtml(currentUser.email || '')}</small>
+       <div id="myOrders" class="my-orders"><p>Loading your orders…</p></div>
+       <button class="btn secondary full" onclick="logout()">Log Out</button>`
+    : `<p>Sign in with Google to keep your account connected to your orders and track their status.</p>
+       <button class="btn google full" onclick="googleLogin()">Continue with Google</button>`;
+  if (currentUser) loadMyOrders();
+}
 
-  document.getElementById('accountStatus').innerHTML =
-    currentUser
-      ? `
-        <b>Signed in</b>
-        <small>${escapeHtml(currentUser.email || '')}</small>
-        <button
-          class="btn secondary full"
-          onclick="logout()"
-        >
-          Log Out
-        </button>
-      `
-      : `
-        <p>
-          Sign in with Google to submit reviews and keep
-          your customer account connected to your orders.
-        </p>
+function orderStatusLabel(status) {
+  const labels = { new: 'Order received', pending: 'Order received', confirmed: 'Confirmed', processing: 'Processing', packed: 'Packed', shipped: 'Shipped', out_for_delivery: 'Out for delivery', delivered: 'Delivered', cancelled: 'Cancelled', returned: 'Returned' };
+  return labels[String(status || 'new').toLowerCase()] || String(status || 'Order received').replace(/_/g, ' ');
+}
 
-        <button
-          class="btn google full"
-          onclick="googleLogin()"
-        >
-          Continue with Google
-        </button>
-      `;
+async function loadMyOrders() {
+  const box = document.getElementById('myOrders');
+  if (!box) return;
+  if (!sb || !currentUser) {
+    box.innerHTML = '<p>Order tracking is unavailable until Supabase is connected.</p>';
+    return;
+  }
+  const { data, error } = await sb.from('orders')
+    .select('id,created_at,items,total,status')
+    .eq('user_id', currentUser.id)
+    .order('created_at', { ascending: false })
+    .limit(25);
+  if (error) {
+    console.warn('Could not load customer orders', error);
+    box.innerHTML = '<p>Orders abhi load nahi ho paaye. Please thodi der baad try karein.</p>';
+    return;
+  }
+  if (!data?.length) {
+    box.innerHTML = '<h3>My Orders</h3><p>Abhi aapka koi order nahi hai. Aapke next orders yahan track honge.</p>';
+    return;
+  }
+  box.innerHTML = '<h3>My Orders & Tracking</h3>' + data.map(o => {
+    const names = Array.isArray(o.items) ? o.items.map(i => `${escapeHtml(i.name || 'Product')} × ${Number(i.qty || 1)}`).join(', ') : 'Order items';
+    const date = o.created_at ? new Date(o.created_at).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' }) : '';
+    return `<article class="my-order"><div class="my-order-top"><b>Order #${escapeHtml(o.id)}</b><span class="order-status">${escapeHtml(orderStatusLabel(o.status))}</span></div><small>${escapeHtml(date)}</small><p>${names}</p><strong>${money(o.total)}</strong><div class="order-steps"><span class="${['new','pending','confirmed','processing','packed','shipped','out_for_delivery','delivered'].includes(String(o.status).toLowerCase())?'done':''}">Received</span><span class="${['confirmed','processing','packed','shipped','out_for_delivery','delivered'].includes(String(o.status).toLowerCase())?'done':''}">Processing</span><span class="${['shipped','out_for_delivery','delivered'].includes(String(o.status).toLowerCase())?'done':''}">Shipped</span><span class="${String(o.status).toLowerCase()==='delivered'?'done':''}">Delivered</span></div></article>`;
+  }).join('');
 }
 
 async function loadProductReviews(pid) {
