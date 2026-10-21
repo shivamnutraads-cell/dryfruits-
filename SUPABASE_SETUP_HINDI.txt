@@ -1,0 +1,44 @@
+NK FOOD AGRO — SUPABASE SETUP (HINDI)
+======================================
+
+A. SUPABASE PROJECT AUR WEBSITE CONFIG
+1. https://supabase.com/dashboard kholen aur apne project ko select karein.
+2. Project Settings → API (ya API Keys) mein Project URL aur Publishable/anon public key dekhein.
+3. Website ke config.js mein supabaseUrl aur supabaseAnonKey ki values isi project se match honi chahiye. Website mein kabhi bhi service_role/secret key mat daalein.
+   Is ZIP mein project URL aur publishable key pehle se configured hain; agar ye aapka sahi project hai to inhe dobara badalne ki zaroorat nahi.
+
+B. DATABASE TABLES BANANA
+1. Supabase → SQL Editor → New query.
+2. Project folder ki SUPABASE_SETUP.sql file kholen, poora SQL copy karein, SQL Editor mein paste karein aur Run dabayein.
+3. Table Editor mein orders aur reviews tables dikhne chahiye.
+4. SQL sirf usi Supabase project mein run karein jiska URL config.js mein hai.
+
+C. GOOGLE LOGIN ON KARNA
+1. Supabase → Authentication → Providers / Sign In Providers → Google enable karein.
+2. Google Cloud Console (https://console.cloud.google.com/) mein project banayein ya select karein.
+3. APIs & Services → OAuth consent screen configure karein.
+4. APIs & Services → Credentials → Create Credentials → OAuth client ID → Web application.
+5. Google client ke Authorized redirect URI mein Supabase dashboard ke Google provider page par diya hua Callback URL paste karein (aksar https://YOUR_PROJECT_REF.supabase.co/auth/v1/callback hota hai; dashboard se copy karein, guess na karein).
+6. Google se mile Client ID aur Client Secret ko Supabase ke Google provider fields mein paste karke Save karein.
+7. Supabase → Authentication → URL Configuration mein Site URL apni deployed website ka exact URL rakhein, jaise https://nkagro.store . Redirect URLs mein https://nkagro.store/** aur agar www domain bhi use hota hai to https://www.nkagro.store/** add karein. Apne GitHub Pages preview ko bhi use karte hon to uska exact URL add karein.
+8. Save karein. Website par Google Login se sign in karke test karein.
+
+D. CUSTOMER ORDER TRACKING KAISE KAAM KAREGA
+1. Customer ko order place karne se PEHLE website par Google Login karna hoga.
+2. Checkout mein order place karne par SheetDB mein order log save hota hai. Signed-in customer ka order Supabase orders table mein bhi save hona chahiye.
+3. Supabase Dashboard → Table Editor → orders kholen. Naye order ki row aur user_id check karein.
+4. Status column ko in values mein update karein: new, confirmed, processing, packed, shipped, out_for_delivery, delivered, cancelled. Customer My Account khol kar latest saved status dekhega.
+5. Agar customer login kiye bina order karta hai, SheetDB mein order save ho sakta hai, lekin Supabase account tracking us order se link nahi hogi. Isliye tracking ke liye Google login zaroori hai.
+
+E. ORDER TEST
+1. Website upload/deploy karne ke baad Google login karein.
+2. Ek test COD order submit karein.
+3. Google Sheet/SheetDB mein nayi row check karein.
+4. Supabase → Table Editor → orders mein row aur matching user_id check karein.
+5. Status ko confirmed karein, website par My Account dobara khol kar status check karein.
+
+TROUBLESHOOTING
+- Google login error: Google OAuth client ka redirect URI Supabase ke exact callback URL se match karein aur Supabase URL Configuration mein deployed domain add karein.
+- Order SheetDB mein hai par Supabase mein nahi: customer login tha ya nahi, browser console error, config.js URL/key, aur orders table policies check karein.
+- Orders table par permission error: SUPABASE_SETUP.sql sahi project mein run hua hai ya nahi check karein. service_role key frontend mein kabhi mat daalein.
+- Google login setup aur real order test kiye bina live tracking ko verified na maanein.

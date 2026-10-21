@@ -86,3 +86,10 @@ Never put a Supabase service_role key in this website. Use only the anon/public 
 - Returns & Refunds: refund-policy.html
 - Privacy Policy: privacy-policy.html
 - The intro jar illustration is assets/dry-fruit-jar.svg. It is an SVG asset, so upload it as-is; no separate PNG conversion is needed.
+
+
+9) MULTIPLE INTRO JARS
+- Intro mein ab teen jars side positions par hain; center logo/brand area ko clear rakha gaya hai.
+- Assets ke exact filenames: assets/dry-fruit-jar-left.svg, assets/dry-fruit-jar-right.svg, assets/dry-fruit-jar-small.svg.
+- Teeno SVG files ko assets folder mein upload karein. Ye SVG hain, PNG mein convert karna zaroori nahi.
+- Supabase ke detailed Hindi steps ke liye SUPABASE_SETUP_HINDI.txt dekhein.

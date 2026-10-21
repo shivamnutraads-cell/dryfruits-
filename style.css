@@ -198,12 +198,16 @@ html{scroll-behavior:smooth}.locked{overflow:hidden}.header{position:sticky;top:
 
 @media(prefers-reduced-motion:reduce){.nk-fruit-intro *{animation-duration:.01ms!important;animation-iteration-count:1!important}}
 
-/* Targeted additions: intro jar, footer licence, order tracking and policy pages */
-.nkfi-jar-wrap{position:absolute;z-index:3;left:50%;top:50%;width:clamp(150px,25vw,275px);transform:translate(-50%,-39%);opacity:.92;filter:drop-shadow(0 18px 22px #0005);animation:nkfiJarFloat 3.8s ease-in-out infinite;pointer-events:none}
-.nkfi-jar{display:block;width:100%;height:auto;max-height:47vh;object-fit:contain}
-.nkfi-brand{margin-top:-7vh;text-shadow:0 2px 10px #102516}
+/* Targeted additions: three separate intro jars positioned away from the centered logo */
+.nkfi-jar-wrap{position:absolute;z-index:3;width:clamp(92px,14vw,170px);opacity:.84;filter:drop-shadow(0 12px 18px #0005);pointer-events:none;animation:nkfiSideJarFloat 4.2s ease-in-out infinite}
+.nkfi-jar{display:block;width:100%;height:auto;max-height:30vh;object-fit:contain}
+.nkfi-jar-left{left:5.5%;top:17%;transform:rotate(-8deg);animation-delay:-.7s}
+.nkfi-jar-right{right:5.5%;top:18%;width:clamp(88px,13vw,158px);transform:rotate(8deg);animation-delay:-2.1s;filter:drop-shadow(0 12px 18px #0005) hue-rotate(8deg)}
+.nkfi-jar-lower{left:13%;bottom:8%;width:clamp(76px,10vw,125px);opacity:.76;transform:rotate(-11deg);animation-delay:-1.4s;filter:drop-shadow(0 10px 14px #0005) saturate(.88)}
+.nkfi-brand{position:relative;z-index:4;margin-top:0;text-shadow:0 2px 10px #102516}
 .nkfi-logo{position:relative;z-index:2}
-@keyframes nkfiJarFloat{0%,100%{transform:translate(-50%,-39%) rotate(-2deg)}50%{transform:translate(-50%,-43%) rotate(2deg)}}
+@keyframes nkfiSideJarFloat{0%,100%{translate:0 0;rotate:0deg}50%{translate:0 -12px;rotate:2deg}}
+@media(max-width:600px){.nkfi-jar-wrap{width:clamp(58px,18vw,105px);opacity:.72}.nkfi-jar-left{left:1.5%;top:19%}.nkfi-jar-right{right:1.5%;top:20%;width:clamp(56px,17vw,98px)}.nkfi-jar-lower{left:3%;bottom:8%;width:clamp(50px,14vw,82px)}.nkfi-jar{max-height:22vh}.nkfi-brand{max-width:78vw}.nkfi-name{font-size:clamp(22px,6vw,32px)}.nkfi-tagline{font-size:9px}.nkfi-caption{font-size:8px}}
 .footer .fssai-number{font-size:12px;color:#d8d9cc;line-height:1.5}
 .footer a{color:inherit}
 .my-orders{margin:22px 0;text-align:left;max-height:42vh;overflow:auto}
