@@ -11,10 +11,10 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-<script src="config.js"></script>
+<link rel="preload" as="image" href="assets/hero.jpg" fetchpriority="high">\n<link rel="stylesheet" href="style.css">
+<script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script defer src="config.js"></script>
 </head>
 <body>
 
@@ -144,6 +144,6 @@
 <div class="modal-overlay" id="reviewModal" onclick="closeReview(event)"><div class="review-modal" onclick="event.stopPropagation()"><button class="modal-close" onclick="closeReview()">×</button><span class="eyebrow">VERIFIED CUSTOMER REVIEW</span><h2 id="reviewProductName">Product Review</h2><form onsubmit="submitReview(event)"><label>Rating<select name="rating"><option value="5">★★★★★ — Excellent</option><option value="4">★★★★☆ — Very Good</option><option value="3">★★★☆☆ — Good</option><option value="2">★★☆☆☆ — Fair</option><option value="1">★☆☆☆☆ — Poor</option></select></label><label>Your Review<textarea name="review" required minlength="8" rows="5" placeholder="Tell other customers about your experience..."></textarea></label><button class="btn primary full">Submit Review for Verification</button></form></div></div>
 <div id="toast" class="toast"></div>
 
-<script src="script.js"></script>
+<script defer src="script.js"></script>
 </body>
 </html>

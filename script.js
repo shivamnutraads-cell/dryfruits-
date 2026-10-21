@@ -363,10 +363,16 @@ function productCard(p, i) {
         <h3>${escapeHtml(p.name)}</h3>
 
         <p>${escapeHtml(p.short)}</p>
+        ${p.category === 'Dry Fruits' ? `
+          <label class="weight-picker">Pack size
+            <select id="pack-${p.id}" aria-label="Choose pack size for ${escapeHtml(p.name)}" onchange="updateCardPrice(${p.id},this.value)">
+              <option value="100">100gm</option><option value="200">200gm</option>
+            </select>
+          </label>` : ''}
 
         <div class="price">
-          <strong>${money(p.price)}</strong>
-          <del>${money(p.mrp)}</del>
+          <strong id="price-${p.id}">${money(p.price)}</strong>
+          <del id="mrp-${p.id}">${money(p.mrp)}</del>
           <b>${p.discount}</b>
         </div>
 
@@ -380,7 +386,7 @@ function productCard(p, i) {
 
           <button
             class="mini-cart"
-            onclick="addToCart(${p.id})"
+            onclick="addCardProduct(${p.id})"
             aria-label="Add to cart"
           >
             ＋
@@ -389,6 +395,26 @@ function productCard(p, i) {
       </div>
     </article>
   `;
+}
+
+function isDryFruit(p) { return p && p.category === 'Dry Fruits'; }
+function packPrice(p, grams) {
+  if (!isDryFruit(p)) return { price: p.price, mrp: p.mrp };
+  const baseIs200 = /walnut/i.test(p.name) || /200\\s*gm/i.test(p.weight);
+  const factor = baseIs200 ? Number(grams) / 200 : Number(grams) / 100;
+  return { price: Math.round(p.price * factor), mrp: Math.round(p.mrp * factor) };
+}
+function updateCardPrice(id, grams) {
+  const p = PRODUCTS.find(x => x.id === id); if (!p) return;
+  const v = packPrice(p, grams);
+  const price = document.getElementById('price-' + id), mrp = document.getElementById('mrp-' + id);
+  if (price) price.textContent = money(v.price);
+  if (mrp) mrp.textContent = money(v.mrp);
+}
+function addCardProduct(id) {
+  const p = PRODUCTS.find(x => x.id === id);
+  const select = document.getElementById('pack-' + id);
+  addToCart(id, isDryFruit(p) ? (select ? select.value : '100') : null);
 }
 
 function renderProducts() {
@@ -468,6 +494,19 @@ function openProduct(id) {
   document.getElementById('detailDiscount').textContent = p.discount;
   document.getElementById('detailDescription').textContent = p.description;
   document.getElementById('detailWeight').textContent = p.weight;
+  let packPicker = document.getElementById('detailPackPicker');
+  if (isDryFruit(p)) {
+    if (!packPicker) {
+      packPicker = document.createElement('label');
+      packPicker.id = 'detailPackPicker';
+      packPicker.className = 'weight-picker detail-weight-picker';
+      packPicker.innerHTML = 'Pack size <select id="detailPackSize" aria-label="Choose dry fruit pack size" onchange="updateDetailPackPrice()"><option value="100">100gm</option><option value="200">200gm</option></select>';
+      document.getElementById('detailWeight').parentElement.insertAdjacentElement('beforebegin', packPicker);
+    }
+    packPicker.style.display = 'flex';
+    document.getElementById('detailPackSize').value = /walnut/i.test(p.name) || /200\\s*gm/i.test(p.weight) ? '200' : '100';
+    updateDetailPackPrice();
+  } else if (packPicker) packPicker.style.display = 'none';
 
   document.getElementById('detailPoints').innerHTML =
     p.details.map(x => `<li>✓ ${escapeHtml(x)}</li>`).join('');
@@ -489,7 +528,8 @@ function openProduct(id) {
     `).join('');
 
   document.getElementById('detailCartBtn').onclick = () => {
-    addToCart(p.id);
+    const size = isDryFruit(p) ? document.getElementById('detailPackSize')?.value : null;
+    addToCart(p.id, size);
     closeProduct();
   };
 
@@ -497,6 +537,15 @@ function openProduct(id) {
   document.body.classList.add('locked');
 
   loadProductReviews(p.id);
+}
+
+function updateDetailPackPrice() {
+  if (!currentProduct || !isDryFruit(currentProduct)) return;
+  const grams = document.getElementById('detailPackSize')?.value || '100';
+  const v = packPrice(currentProduct, grams);
+  document.getElementById('detailPrice').textContent = money(v.price);
+  document.getElementById('detailMrp').textContent = money(v.mrp);
+  document.getElementById('detailWeight').textContent = grams + 'gm pack';
 }
 
 function selectGallery(src, b) {
@@ -516,27 +565,20 @@ function closeProduct(e) {
   }
 }
 
-function addToCart(id) {
-  const p = PRODUCTS.find(x => x.id === id);
-
+function addToCart(id, grams = null) {
+  const p = PRODUCTS.find(x => x.id === Number(id));
   if (!p) return;
-
-  const x = cart.find(i => i.id === id);
-
-  if (x) {
-    x.qty++;
-  } else {
-    cart.push({
-      id: p.id,
-      name: p.name,
-      price: p.price,
-      qty: 1
-    });
-  }
-
-  saveCart();
-  renderCart();
-  toast('Added to cart ✓');
+  const variant = isDryFruit(p) ? String(grams || '100') : '';
+  const v = isDryFruit(p) ? packPrice(p, variant) : { price: p.price, mrp: p.mrp };
+  const cartId = isDryFruit(p) ? `${p.id}-${variant}` : String(p.id);
+  const x = cart.find(i => String(i.id) === cartId);
+  if (x) x.qty++;
+  else cart.push({
+    id: cartId, product_id: p.id,
+    name: p.name + (variant ? ` (${variant}gm)` : ''),
+    price: v.price, qty: 1, weight: variant ? variant + 'gm' : p.weight
+  });
+  saveCart(); renderCart(); toast('Added to cart ✓');
 }
 
 function saveCart() {
@@ -544,13 +586,13 @@ function saveCart() {
 }
 
 function removeItem(id) {
-  cart = cart.filter(x => x.id !== id);
+  cart = cart.filter(x => String(x.id) !== String(id));
   saveCart();
   renderCart();
 }
 
 function changeQty(id, d) {
-  const x = cart.find(i => i.id === id);
+  const x = cart.find(i => String(i.id) === String(id));
 
   if (!x) return;
 
@@ -594,9 +636,9 @@ function renderCart() {
             <small>${money(x.price)} each</small>
 
             <div class="qty">
-              <button onclick="changeQty(${x.id},-1)">−</button>
+              <button onclick='changeQty(${JSON.stringify(String(x.id))},-1)' >−</button>
               <span>${x.qty}</span>
-              <button onclick="changeQty(${x.id},1)">+</button>
+              <button onclick='changeQty(${JSON.stringify(String(x.id))},1)' >+</button>
             </div>
           </div>
 
@@ -604,7 +646,7 @@ function renderCart() {
             <b>${money(x.price * x.qty)}</b>
             <button
               class="remove"
-              onclick="removeItem(${x.id})"
+              onclick='removeItem(${JSON.stringify(String(x.id))})' 
             >
               Remove
             </button>
@@ -667,7 +709,7 @@ async function placeOrder(ev) {
   const data = Object.fromEntries(form.entries());
   const total = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
   const orderRef = 'NK' + Date.now().toString().slice(-9) + Math.floor(Math.random() * 90 + 10);
-  const items = cart.map(item => ({ id: item.id, name: item.name, qty: item.qty, price: item.price }));
+  const items = cart.map(item => ({ id: item.product_id || item.id, name: item.name, weight: item.weight || '', qty: item.qty, price: item.price }));
   const order = { ...data, order_ref: orderRef, total, items, user_id: currentUser?.id || null };
   let sheetSaved = false;
   let supabaseSaved = false;
