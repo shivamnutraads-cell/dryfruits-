@@ -70,6 +70,52 @@ const PRODUCTS = [
 
   {
     id: 4,
+    category: "Makhana",
+    name: "Peri Peri makhana",
+    price: 160,
+    mrp: 499,
+    discount: "17% OFF",
+    weight: "65g total",
+    short: "A convenient for stocking up.",
+    description: "A value-focused makhana combo for your home pantry, gifting or regular snack routine.",
+    details: [
+      "Makhana pack",
+      "65g total",
+      "Premium presentation",
+      "COD available"
+    ],
+    images: [
+      "assets/makhana-peri.png",
+      "assets/makhana-peri-2.png",
+      "assets/makhana-peri-3.png"
+    ]
+  },
+
+  {
+    id: 5,
+    category: "Makhana",
+    name: "Cream n Onion Makhna",
+    price: 160,
+    mrp: 499,
+    discount: "17% OFF",
+    weight: "65g total",
+    short: "A convenient for stocking up.",
+    description: "A value-focused makhana combo for your home pantry, gifting or regular snack routine.",
+    details: [
+      "Makhana pack",
+      "65g total",
+      "Premium presentation",
+      "COD available"
+    ],
+    images: [
+      "assets/makhana-cream.png",
+      "assets/makhana-cream-2.png",
+      "assets/makhana-cream-3.png"
+    ]
+  },
+
+  {
+    id: 6,
     category: "Dry Fruits",
     name: "Premium Almonds",
     price: 199,
@@ -92,7 +138,7 @@ const PRODUCTS = [
   },
 
   {
-    id: 5,
+    id: 7,
     category: "Dry Fruits",
     name: "Premium Cashews",
     price: 175,
@@ -115,7 +161,7 @@ const PRODUCTS = [
   },
 
   {
-    id: 6,
+    id: 8,
     category: "Dry Fruits",
     name: "Dry Fruits Premium Mix",
     price: 168,
@@ -138,7 +184,30 @@ const PRODUCTS = [
   },
 
   {
-    id: 7,
+    id: 9,
+    category: "Dry Fruits",
+    name: "Premium walnuts",
+    price: 199,
+    mrp: 499,
+    discount: "17% OFF",
+    weight: "200gm",
+    short: "Premium walnuts for snacking and recipes.",
+    description: "Selected walnuts with a satisfying crunch. Great for direct snacking, breakfast bowls, desserts and everyday recipes.",
+    details: [
+      "200gm pack",
+      "Premium grade selection",
+      "Resealable-style storage recommended",
+      "COD available"
+    ],
+    images: [
+      "assets/walnuts.png",
+      "assets/walnuts-2.png",
+      "assets/walnuts-3.png"
+    ]
+  },
+
+  {
+    id: 10,
     category: "Gift Hampers",
     name: "Royal Dry Fruit Hamper",
     price: 999,
@@ -161,7 +230,7 @@ const PRODUCTS = [
   },
 
   {
-    id: 8,
+    id: 11,
     category: "Gift Hampers",
     name: "Festive Makhana Hamper",
     price: 799,
@@ -184,7 +253,7 @@ const PRODUCTS = [
   },
 
   {
-    id: 9,
+    id: 12,
     category: "Gift Hampers",
     name: "Premium Celebration Hamper",
     price: 1499,
