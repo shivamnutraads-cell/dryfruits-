@@ -25,16 +25,16 @@ const PRODUCTS = [
   {
     id: 2,
     category: "Makhana",
-    name: "Premium Makhana Family Pack",
+    name: "Black Pepper & Saleted Makhana",
     price: 549,
     mrp: 798,
     discount: "31% OFF",
-    weight: "500g",
+    weight: "200g",
     short: "A bigger family pack for regular snacking.",
-    description: "A generous 500g pack of premium makhana, made for families who want a convenient pantry staple with a satisfying crunch.",
+    description: "A generous 200g pack of premium makhana, made for families who want a convenient pantry staple with a satisfying crunch.",
     details: [
       "Premium selected fox nuts",
-      "500g family pack",
+      "200g family pack",
       "Freshness-focused packing",
       "COD available"
     ],
@@ -48,16 +48,16 @@ const PRODUCTS = [
   {
     id: 3,
     category: "Makhana",
-    name: "Healthy Makhana Combo",
+    name: "Punjabi Tadka Makhana",
     price: 499,
     mrp: 598,
     discount: "17% OFF",
-    weight: "500g total",
-    short: "A convenient combo for stocking up.",
+    weight: "200g total",
+    short: "A convenient for stocking up.",
     description: "A value-focused makhana combo for your home pantry, gifting or regular snack routine.",
     details: [
-      "Makhana combo pack",
-      "500g total",
+      "Makhana pack",
+      "200g total",
       "Premium presentation",
       "COD available"
     ],
