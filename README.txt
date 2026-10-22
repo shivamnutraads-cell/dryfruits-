@@ -4,15 +4,15 @@ Updated to match the current GitHub asset naming shown in your screenshot.
 
 MAIN ASSETS:
 assets/hero.jpg
-assets/benefits.png
-assets/makhana-250g.png
-assets/makhana-500g.png
-assets/makhana-combo.png
+assets/benefits.webp
+assets/makhana-250g.webp
+assets/makhana-500g.webp
+assets/makhana-combo.webp
 
 GALLERY ASSETS:
-assets/makhana-250g-2.png
-assets/makhana-500g-2.png
-assets/makhana-combo-2.png
+assets/makhana-250g-2.webp
+assets/makhana-500g-2.webp
+assets/makhana-combo-2.webp
 
 The website uses object-fit: contain, so product images of different sizes/aspect ratios fit inside the product frame without stretching or unwanted cropping.
 
@@ -30,7 +30,7 @@ FEATURES:
 - Responsive layout
 - Royal curtain opening animation
 - PNG image paths fixed
-- Benefits image path fixed from benefits.jpg to benefits.png
+- Benefits image path fixed from benefits.jpg to benefits.webp
 
 IMPORTANT:
 The ZIP you uploaded contained only one actual product photo (assets/makhana.jpg). Therefore, the three Makhana PNG files are valid PNG conversions of that source image, and simple neutral placeholder PNGs are included for Dry Fruits and Gift Hampers so those products never show broken images.

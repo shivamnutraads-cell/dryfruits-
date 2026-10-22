@@ -251,3 +251,14 @@ html{scroll-behavior:smooth}.locked{overflow:hidden}.header{position:sticky;top:
 @media(prefers-reduced-motion:reduce){
   *,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
 }
+
+
+/* Product-card interaction and fast, accessible browsing */
+.product-title-link{appearance:none;border:0;padding:0;background:transparent;color:inherit;font:inherit;font-weight:inherit;text-align:left;cursor:pointer;line-height:inherit}
+.product-title-link:hover,.product-title-link:focus-visible{color:#9a742d;text-decoration:underline;text-underline-offset:4px}
+.product-image img[role="button"]{cursor:pointer}
+.add-cart-card{flex:1;min-height:44px;white-space:nowrap}
+.card-actions{gap:8px}
+.nkfi-jar-wrap[hidden]{display:none!important}
+@media(max-width:600px){.hero-product,.product-card,.quick-glow,.hero-frame:after{animation:none!important}.quick-glow{display:none}.product-card{will-change:auto}.product-image img,.smart-image{transition:none}.header{backdrop-filter:none}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
