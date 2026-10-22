@@ -18,7 +18,7 @@ const PRODUCTS = [
     images: [
       "assets/makhana-250g.png",
       "assets/makhana-250g-2.png",
-      "assets/makhana-250g.png"
+      "assets/makhana-250g-3.png"
     ]
   },
 
@@ -133,7 +133,7 @@ const PRODUCTS = [
     images: [
       "assets/almonds.png",
       "assets/almonds-2.png",
-      "assets/almonds.png"
+      "assets/almonds-3.png"
     ]
   },
 
@@ -156,7 +156,7 @@ const PRODUCTS = [
     images: [
       "assets/cashews.png",
       "assets/cashews-2.png",
-      "assets/cashews.png"
+      "assets/cashews-3.png"
     ]
   },
 
@@ -179,7 +179,7 @@ const PRODUCTS = [
     images: [
       "assets/dry-fruits-mix.png",
       "assets/dry-fruits-mix-2.png",
-      "assets/dry-fruits-mix.png"
+      "assets/dry-fruits-mix-3.png"
     ]
   },
 
@@ -202,7 +202,7 @@ const PRODUCTS = [
     images: [
       "assets/walnuts.png",
       "assets/walnuts-2.png",
-      "assets/walnuts.png"
+      "assets/walnuts-3.png"
     ]
   },
 
