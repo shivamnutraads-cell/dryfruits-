@@ -16,22 +16,22 @@ const PRODUCTS = [
       "COD available"
     ],
     images: [
-      "assets/makhana-250g.webp",
-      "assets/makhana-250g-2.webp",
-      "assets/makhana-250g.webp"
+      "assets/makhana-250g.png",
+      "assets/makhana-250g-2.png",
+      "assets/makhana-250g-3.png"
     ]
   },
 
   {
     id: 2,
     category: "Makhana",
-    name: "Black Pepper & Salted Makhana",
+    name: "Black Pepper & Saleted Makhana",
     price: 160,
     mrp: 299,
     discount: "31% OFF",
     weight: "65g",
-    short: "Crunchy makhana with a bold black-pepper seasoning and a savoury salted finish.",
-    description: "Enjoy the light crunch of makhana with a peppery kick and savoury salted taste. A handy snack for tea breaks, travel and sharing. Check the pack label for exact ingredients and allergen information.",
+    short: "A bigger family pack for regular snacking.",
+    description: "A generous 200g pack of premium makhana, made for families who want a convenient pantry staple with a satisfying crunch.",
     details: [
       "Premium selected fox nuts",
       "65g family pack",
@@ -39,9 +39,9 @@ const PRODUCTS = [
       "COD available"
     ],
     images: [
-      "assets/makhana-500g.webp",
-      "assets/makhana-500g-2.webp",
-      "assets/makhana-500g-3.webp"
+      "assets/makhana-500g.png",
+      "assets/makhana-500g-2.png",
+      "assets/makhana-500g-3.png"
     ]
   },
 
@@ -53,8 +53,8 @@ const PRODUCTS = [
     mrp: 499,
     discount: "17% OFF",
     weight: "65g total",
-    short: "A savoury, desi-style tadka flavour with a satisfying crunch.",
-    description: "Punjabi Tadka Makhana brings a bold, savoury snack option to tea time, movie nights and quick breaks. Keep the pack sealed after opening and refer to the label for ingredients and allergen details.",
+    short: "A convenient for stocking up.",
+    description: "A value-focused makhana combo for your home pantry, gifting or regular snack routine.",
     details: [
       "Makhana pack",
       "65g total",
@@ -62,9 +62,9 @@ const PRODUCTS = [
       "COD available"
     ],
     images: [
-      "assets/makhana-combo.webp",
-      "assets/makhana-combo-2.webp",
-      "assets/makhana-combo-3.webp"
+      "assets/makhana-combo.png",
+      "assets/makhana-combo-2.png",
+      "assets/makhana-combo-3.png"
     ]
   },
 
@@ -76,8 +76,8 @@ const PRODUCTS = [
     mrp: 499,
     discount: "17% OFF",
     weight: "65g total",
-    short: "A spicy peri-peri style flavour with a lively kick.",
-    description: "Peri Peri Makhana combines a crunchy fox-nut snack with a tangy, spicy-style seasoning. Enjoy it during work breaks, travel or as an easy snack to share. Check the product label for ingredients and allergen details.",
+    short: "A convenient for stocking up.",
+    description: "A value-focused makhana combo for your home pantry, gifting or regular snack routine.",
     details: [
       "Makhana pack",
       "65g total",
@@ -85,9 +85,9 @@ const PRODUCTS = [
       "COD available"
     ],
     images: [
-      "assets/makhana-peri.webp",
-      "assets/makhana-peri-2.webp",
-      "assets/makhana-peri-3.webp"
+      "assets/makhana-peri.png",
+      "assets/makhana-peri-2.png",
+      "assets/makhana-peri-3.png"
     ]
   },
 
@@ -99,8 +99,8 @@ const PRODUCTS = [
     mrp: 499,
     discount: "17% OFF",
     weight: "65g total",
-    short: "A creamy-style onion flavour with a crisp makhana bite.",
-    description: "Cream n Onion Makhana offers a savoury, creamy-style onion seasoning with a light crunch. It is an easy option for snack time at home or on the go. Please check the pack label for ingredients and allergen information.",
+    short: "A convenient for stocking up.",
+    description: "A value-focused makhana combo for your home pantry, gifting or regular snack routine.",
     details: [
       "Makhana pack",
       "65g total",
@@ -108,9 +108,9 @@ const PRODUCTS = [
       "COD available"
     ],
     images: [
-      "assets/makhana-cream.webp",
-      "assets/makhana-cream-2.webp",
-      "assets/makhana-cream-3.webp"
+      "assets/makhana-cream.png",
+      "assets/makhana-cream-2.png",
+      "assets/makhana-cream-3.png"
     ]
   },
 
@@ -122,8 +122,8 @@ const PRODUCTS = [
     mrp: 499,
     discount: "17% OFF",
     weight: "100gm",
-    short: "Carefully selected almonds for everyday snacking and recipes.",
-    description: "Premium Almonds bring a naturally nutty taste and firm crunch to your daily pantry. Enjoy them on their own, add them to porridge and breakfast bowls, or use them in desserts and home cooking. Store in a cool, dry place and check the pack for net weight and allergen information.",
+    short: "Premium almonds for snacking and recipes.",
+    description: "Selected almonds with a satisfying crunch. Great for direct snacking, breakfast bowls, desserts and everyday recipes.",
     details: [
       "100g pack",
       "Premium grade selection",
@@ -131,9 +131,9 @@ const PRODUCTS = [
       "COD available"
     ],
     images: [
-      "assets/almonds.webp",
-      "assets/almonds-2.webp",
-      "assets/almonds.webp"
+      "assets/almonds.png",
+      "assets/almonds-2.png",
+      "assets/almonds-3.png"
     ]
   },
 
@@ -145,8 +145,8 @@ const PRODUCTS = [
     mrp: 399,
     discount: "21% OFF",
     weight: "100g",
-    short: "Smooth, buttery-tasting cashews with a satisfying crunch.",
-    description: "Premium Cashews are versatile for everyday munching, trail mixes, sweets and savoury recipes. Their mild, creamy taste pairs well with both snacks and cooking. Store tightly sealed in a cool, dry place. Contains tree nuts; review the pack label for allergen details.",
+    short: "Creamy, crunchy cashews for home and gifting.",
+    description: "Premium cashews chosen for their creamy bite and crunch. A versatile pantry favourite for snacking and cooking.",
     details: [
       "100g pack",
       "Premium selection",
@@ -154,9 +154,9 @@ const PRODUCTS = [
       "COD available"
     ],
     images: [
-      "assets/cashews.webp",
-      "assets/cashews-2.webp",
-      "assets/cashews.webp"
+      "assets/cashews.png",
+      "assets/cashews-2.png",
+      "assets/cashews-3.png"
     ]
   },
 
@@ -168,8 +168,8 @@ const PRODUCTS = [
     mrp: 399,
     discount: "18% OFF",
     weight: "100g",
-    short: "A convenient assortment for variety in every handful.",
-    description: "Dry Fruits Premium Mix brings a selection of dry fruits together in one handy pack. Enjoy it as a snack, add it to breakfast bowls and desserts, or serve it to guests. The exact mix may vary by pack, so use the ingredient and allergen information printed on the label.",
+    short: "A curated mix of assorted dry fruits.",
+    description: "A convenient assortment for those who like variety in one pack. Suitable for snacking, breakfast bowls and gifting.",
     details: [
       "100g assorted mix",
       "Curated assortment",
@@ -177,9 +177,9 @@ const PRODUCTS = [
       "COD available"
     ],
     images: [
-      "assets/dry-fruits-mix.webp",
-      "assets/dry-fruits-mix-2.webp",
-      "assets/dry-fruits-mix.webp"
+      "assets/dry-fruits-mix.png",
+      "assets/dry-fruits-mix-2.png",
+      "assets/dry-fruits-mix-3.png"
     ]
   },
 
@@ -191,8 +191,8 @@ const PRODUCTS = [
     mrp: 499,
     discount: "17% OFF",
     weight: "200gm",
-    short: "Distinctive walnut flavour for snacks, breakfasts and baking.",
-    description: "Premium Walnuts offer a rich, earthy taste and are easy to add to breakfast bowls, salads, desserts and everyday recipes. Enjoy as a snack or chop into your favourite dishes. Store in a cool, dry place and check the label for pack weight and allergen information.",
+    short: "Premium walnuts for snacking and recipes.",
+    description: "Selected walnuts with a satisfying crunch. Great for direct snacking, breakfast bowls, desserts and everyday recipes.",
     details: [
       "200gm pack",
       "Premium grade selection",
@@ -200,9 +200,9 @@ const PRODUCTS = [
       "COD available"
     ],
     images: [
-      "assets/walnuts.webp",
-      "assets/walnuts-2.webp",
-      "assets/walnuts.webp"
+      "assets/walnuts.png",
+      "assets/walnuts-2.png",
+      "assets/walnuts-3.png"
     ]
   },
 
@@ -214,7 +214,7 @@ const PRODUCTS = [
     mrp: 1999,
     discount: "23% OFF",
     weight: "Premium Gift Box",
-    short: "A premium dry-fruit gift hamper for celebrations and thoughtful gifting.",
+    short: "A premium hamper for celebrations and thoughtful gifting.",
     description: "A beautifully presented dry-fruit hamper designed for festive occasions, family celebrations and corporate-style gifting.",
     details: [
       "Premium gift presentation",
@@ -223,9 +223,9 @@ const PRODUCTS = [
       "COD available"
     ],
     images: [
-      "assets/royal-hamper.webp",
-      "assets/royal-hamper-2.webp",
-      "assets/royal-hamper-3.webp"
+      "assets/royal-hamper.png",
+      "assets/royal-hamper-2.png",
+      "assets/royal-hamper-3.png"
     ]
   },
 
@@ -237,7 +237,7 @@ const PRODUCTS = [
     mrp: 1299,
     discount: "20% OFF",
     weight: "Gift Pack",
-    short: "A festive gift set for makhana lovers and snack-time sharing.",
+    short: "A thoughtful makhana gift for festive moments.",
     description: "A festive hamper concept built around premium makhana, presented to make gifting simple, warm and memorable.",
     details: [
       "Makhana-focused gift pack",
@@ -246,9 +246,9 @@ const PRODUCTS = [
       "COD available"
     ],
     images: [
-      "assets/festive-hamper.webp",
-      "assets/festive-hamper-2.webp",
-      "assets/festive-hamper-3.webp"
+      "assets/festive-hamper.png",
+      "assets/festive-hamper-2.png",
+      "assets/festive-hamper-3.png"
     ]
   },
 
@@ -260,7 +260,7 @@ const PRODUCTS = [
     mrp: 1899,
     discount: "21% OFF",
     weight: "Luxury Gift Box",
-    short: "A celebration-ready hamper for family, friends and special occasions.",
+    short: "A larger luxury-style assortment for special occasions.",
     description: "A premium assortment curated for birthdays, festivals, family occasions and special thank-you gifts.",
     details: [
       "Luxury-style gift box",
@@ -269,9 +269,9 @@ const PRODUCTS = [
       "COD available"
     ],
     images: [
-      "assets/celebration-hamper.webp",
-      "assets/celebration-hamper-2.webp",
-      "assets/celebration-hamper-3.webp"
+      "assets/celebration-hamper.png",
+      "assets/celebration-hamper-2.png",
+      "assets/celebration-hamper-3.png"
     ]
   }
 ];
@@ -331,14 +331,7 @@ function escapeHtml(s = '') {
 function imgFallback(el) {
   if (el.dataset.fallbackDone) return;
   el.dataset.fallbackDone = '1';
-  // Do not show an unrelated product when an image is missing.
-  if (el.classList.contains('nkfi-jar')) {
-    const wrap = el.closest('.nkfi-jar-wrap');
-    if (wrap) wrap.hidden = true;
-    return;
-  }
-  el.style.visibility = 'hidden';
-  el.setAttribute('aria-label', 'Product image unavailable');
+  el.src = 'assets/makhana-500g.png';
 }
 
 document.addEventListener('error', e => {
@@ -356,10 +349,8 @@ function productCard(p, i) {
 
         <img
           src="${p.images[0]}"
-          alt="${escapeHtml(p.name)} — open product details"
-          loading="lazy" decoding="async" fetchpriority="low"
-          onclick="openProduct(${p.id})" role="button" tabindex="0"
-          onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openProduct(${p.id})}"
+          alt="${escapeHtml(p.name)}"
+          loading="lazy"
         >
       </div>
 
@@ -369,7 +360,7 @@ function productCard(p, i) {
           <span class="review-count" data-product="${p.id}"></span>
         </div>
 
-        <h3><button type="button" class="product-title-link" onclick="openProduct(${p.id})">${escapeHtml(p.name)}</button></h3>
+        <h3>${escapeHtml(p.name)}</h3>
 
         <p>${escapeHtml(p.short)}</p>
         ${p.category === 'Dry Fruits' ? `
@@ -386,8 +377,19 @@ function productCard(p, i) {
         </div>
 
         <div class="card-actions">
-          <button type="button" class="btn primary add-cart-card" onclick="addCardProduct(${p.id})">
-            Add to Cart
+          <button
+            class="btn primary"
+            onclick="openProduct(${p.id})"
+          >
+            View Details
+          </button>
+
+          <button
+            class="mini-cart"
+            onclick="addCardProduct(${p.id})"
+            aria-label="Add to cart"
+          >
+            ＋
           </button>
         </div>
       </div>
@@ -398,7 +400,7 @@ function productCard(p, i) {
 function isDryFruit(p) { return p && p.category === 'Dry Fruits'; }
 function packPrice(p, grams) {
   if (!isDryFruit(p)) return { price: p.price, mrp: p.mrp };
-  const baseIs200 = /walnut/i.test(p.name) || /200\s*gm/i.test(p.weight);
+  const baseIs200 = /walnut/i.test(p.name) || /200\\s*gm/i.test(p.weight);
   const factor = baseIs200 ? Number(grams) / 200 : Number(grams) / 100;
   return { price: Math.round(p.price * factor), mrp: Math.round(p.mrp * factor) };
 }
@@ -502,7 +504,7 @@ function openProduct(id) {
       document.getElementById('detailWeight').parentElement.insertAdjacentElement('beforebegin', packPicker);
     }
     packPicker.style.display = 'flex';
-    document.getElementById('detailPackSize').value = /walnut/i.test(p.name) || /200\s*gm/i.test(p.weight) ? '200' : '100';
+    document.getElementById('detailPackSize').value = /walnut/i.test(p.name) || /200\\s*gm/i.test(p.weight) ? '200' : '100';
     updateDetailPackPrice();
   } else if (packPicker) packPicker.style.display = 'none';
 
@@ -1218,7 +1220,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const rainLayer = document.getElementById('nkfiRain');
   if (rainLayer && !rainLayer.dataset.ready) {
     rainLayer.dataset.ready = '1';
-    const fruitAssets = ['assets/falling-almond.webp', 'assets/falling-cashew.webp', 'assets/falling-pistachio.webp', 'assets/falling-walnut.webp', 'assets/falling-raisins.webp', 'assets/falling-makhana.webp', 'assets/falling-fig.webp', 'assets/falling-dates.webp'];
+    const fruitAssets = ['assets/falling-almond.png', 'assets/falling-cashew.png', 'assets/falling-pistachio.png', 'assets/falling-walnut.png', 'assets/falling-raisins.png', 'assets/falling-makhana.png', 'assets/falling-fig.png', 'assets/falling-dates.png'];
     for (let i = 0; i < 64; i++) {
       const item = document.createElement('img');
       item.className = 'nkfi-rain-item';
