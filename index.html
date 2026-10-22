@@ -11,7 +11,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
-<link rel="preload" as="image" href="assets/hero.jpg" fetchpriority="high">\n<link rel="stylesheet" href="style.css">
+<link rel="preload" as="image" href="assets/hero.jpg" fetchpriority="high">
+<link rel="stylesheet" href="style.css">
 <script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <script defer src="config.js"></script>
@@ -21,9 +22,9 @@
 <div class="nk-fruit-intro" id="nkFruitIntro" aria-hidden="true">
   <div class="nkfi-glow"></div>
   <div class="nkfi-rain" id="nkfiRain" aria-hidden="true"></div>
-  <div class="nkfi-jar-wrap nkfi-jar-left"><img class="nkfi-jar" src="assets/dry-fruit-jar-left.svg" alt="Jar of assorted dry fruits"></div>
-  <div class="nkfi-jar-wrap nkfi-jar-right"><img class="nkfi-jar" src="assets/dry-fruit-jar-right.svg" alt="Jar of assorted dry fruits"></div>
-  <div class="nkfi-jar-wrap nkfi-jar-lower"><img class="nkfi-jar" src="assets/dry-fruit-jar-small.svg" alt="Small jar of assorted dry fruits"></div>
+  <div class="nkfi-jar-wrap nkfi-jar-left custom-jar-slot" data-custom-jar="custom-jar-left.png" hidden></div>
+  <div class="nkfi-jar-wrap nkfi-jar-right custom-jar-slot" data-custom-jar="custom-jar-right.png" hidden></div>
+  <div class="nkfi-jar-wrap nkfi-jar-lower custom-jar-slot" data-custom-jar="custom-jar-small.png" hidden></div>
   <div class="nkfi-brand">
     <img class="nkfi-logo" src="assets/nk-logo.png" alt="NK Food Agro">
     <div class="nkfi-name">NK FOOD AGRO</div>

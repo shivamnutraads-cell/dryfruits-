@@ -93,3 +93,17 @@ Never put a Supabase service_role key in this website. Use only the anon/public 
 - Assets ke exact filenames: assets/dry-fruit-jar-left.svg, assets/dry-fruit-jar-right.svg, assets/dry-fruit-jar-small.svg.
 - Teeno SVG files ko assets folder mein upload karein. Ye SVG hain, PNG mein convert karna zaroori nahi.
 - Supabase ke detailed Hindi steps ke liye SUPABASE_SETUP_HINDI.txt dekhein.
+
+
+CUSTOM JAR IMAGES (FRONT INTRO)
+--------------------------------
+The old decorative jar pictures are no longer used. Upload your own transparent PNG images into the assets folder with these exact names:
+- assets/custom-jar-left.png
+- assets/custom-jar-right.png
+- assets/custom-jar-small.png
+
+If a file has not been uploaded yet, that jar spot stays hidden rather than showing an old or unrelated image. You can upload just one or all three.
+
+PRODUCT CARDS AND PERFORMANCE
+-----------------------------
+Product names and product images open the product details popup. The card's Add to Cart button adds the currently selected pack size to the cart. Product photos have been optimized to WebP to reduce download size; keep the .png filenames in the code when updating the site.
