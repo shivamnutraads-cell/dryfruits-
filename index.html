@@ -52,7 +52,7 @@ src="https://www.facebook.com/tr?id=1430246848704728&ev=PageView&noscript=1"
   <button class="nkfi-skip" id="nkFruitSkip" type="button">Skip Intro →</button>
 </div>
 
-<div class="topbar">🌿 100% Natural &nbsp; • &nbsp; Farm Fresh &nbsp; • &nbsp; COD Available</div>
+<div class="topbar">🌿 100% Natural &nbsp; • &nbsp; Farm Fresh &nbsp; • &nbsp; COD Available &nbsp; • &nbsp; 🛍️ Orders above ₹599 get FREE Delivery · ₹49 delivery below ₹600</div>
 <header class="header">
   <a class="brand" href="#"><img class="brand-logo-image" src="assets/nk-logo.png" alt="NK Food Agro logo"><span><b>NK FOOD AGRO</b><small>Good Food · Better Tomorrow</small></span></a>
   <nav><a href="#shop">Shop</a><a href="#categories">Categories</a><a href="#benefits">Why Us</a><a href="#about">About</a></nav>
@@ -144,7 +144,7 @@ src="https://www.facebook.com/tr?id=1430246848704728&ev=PageView&noscript=1"
 </div>
 
 <!-- CART -->
-<div class="cart-overlay" id="cartOverlay" onclick="closeCart(event)"><aside class="cart" onclick="event.stopPropagation()"><button class="close" onclick="closeCart()">×</button><h2>Your Cart</h2><div id="cartItems"><p class="empty">Your cart is empty.</p></div><div class="cart-total"><span>Delivery fee</span><strong id="cartShipping">₹49</strong></div><div class="cart-total"><span>Total</span><strong id="cartTotal">₹0</strong></div><button class="btn primary full" onclick="checkout()">Proceed to Checkout</button><p class="secure">🔒 Secure checkout · COD available</p></aside></div>
+<div class="cart-overlay" id="cartOverlay" onclick="closeCart(event)"><aside class="cart" onclick="event.stopPropagation()"><button class="close" onclick="closeCart()">×</button><h2>Your Cart</h2><div id="cartItems"><p class="empty">Your cart is empty.</p></div><div id="cartDeliveryBreakdown" class="delivery-breakdown"></div><div class="cart-total"><span>Total (incl. delivery)</span><strong id="cartTotal">₹0</strong></div><button class="btn primary full" onclick="checkout()">Proceed to Checkout</button><p class="secure">🔒 Secure checkout · COD available</p></aside></div>
 
 
 <!-- ACCOUNT -->
@@ -155,7 +155,7 @@ src="https://www.facebook.com/tr?id=1430246848704728&ev=PageView&noscript=1"
 <!-- CHECKOUT -->
 <div class="modal-overlay" id="checkoutModal" onclick="closeCheckout(event)">
  <div class="checkout-modal" onclick="event.stopPropagation()"><button class="modal-close" onclick="closeCheckout()">×</button><div class="checkout-head"><span class="eyebrow">SECURE ORDER</span><h2>Complete your order</h2><p>Fill your delivery details. Your order will be sent securely for processing. You can track orders from your account after signing in.</p></div>
- <form id="checkoutForm" onsubmit="placeOrder(event)"><div class="form-grid"><label>Full Name*<input id="orderName" name="name" required autocomplete="name"></label><label>Phone Number*<input name="phone" required inputmode="tel" autocomplete="tel"></label><label>Email*<input id="orderEmail" name="email" type="email" required autocomplete="email"></label><label>PIN Code*<input name="pincode" required inputmode="numeric" autocomplete="postal-code"></label><label>City*<input name="city" required autocomplete="address-level2"></label><label>State*<input name="state" required autocomplete="address-level1"></label><label class="wide">Full Address*<textarea name="address" required autocomplete="street-address" rows="3"></textarea></label><label>Landmark<input name="landmark" autocomplete="off"></label><label>Order Note<input name="notes" placeholder="Optional"></label></div><div class="cod-box"><b>💵 Cash on Delivery</b><span>Payment is collected at delivery. Do not enter card/UPI details here.</span></div><div class="checkout-total"><span>Subtotal</span><strong id="checkoutSubtotal">₹0</strong></div><div class="checkout-total"><span>Delivery fee</span><strong id="checkoutShipping">₹49</strong></div><div class="checkout-total"><span>Order Total</span><strong id="checkoutTotal">₹0</strong></div><button class="btn primary full" type="submit">Place Order →</button></form></div>
+ <form id="checkoutForm" onsubmit="placeOrder(event)"><div class="form-grid"><label>Full Name*<input id="orderName" name="name" required autocomplete="name"></label><label>Phone Number*<input name="phone" required inputmode="tel" autocomplete="tel"></label><label>Email*<input id="orderEmail" name="email" type="email" required autocomplete="email"></label><label>PIN Code*<input name="pincode" required inputmode="numeric" autocomplete="postal-code"></label><label>City*<input name="city" required autocomplete="address-level2"></label><label>State*<input name="state" required autocomplete="address-level1"></label><label class="wide">Full Address*<textarea name="address" required autocomplete="street-address" rows="3"></textarea></label><label>Landmark<input name="landmark" autocomplete="off"></label><label>Order Note<input name="notes" placeholder="Optional"></label></div><div class="cod-box"><b>💵 Cash on Delivery</b><span>Payment is collected at delivery. Do not enter card/UPI details here.</span></div><div id="checkoutDeliveryBreakdown" class="delivery-breakdown"></div><div class="checkout-total"><span>Order Total (incl. delivery)</span><strong id="checkoutTotal">₹0</strong></div><button class="btn primary full" type="submit">Place Order →</button></form></div>
 </div>
 
 <!-- REVIEW -->

@@ -262,3 +262,6 @@ html{scroll-behavior:smooth}.locked{overflow:hidden}.header{position:sticky;top:
 .nkfi-jar-wrap[hidden]{display:none!important}
 @media(max-width:600px){.hero-product,.product-card,.quick-glow,.hero-frame:after{animation:none!important}.quick-glow{display:none}.product-card{will-change:auto}.product-image img,.smart-image{transition:none}.header{backdrop-filter:none}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+
+/* Delivery price breakdown */
+.delivery-breakdown{border-top:1px solid #eee7d8;padding-top:12px;margin-top:8px}.shipping-line{display:flex;justify-content:space-between;gap:15px;padding:5px 0;font-size:13px;color:#526456}.shipping-line b{color:#173c25}.topbar{line-height:1.5}.weight-picker select{margin-left:6px;border:1px solid #dcd7cb;border-radius:7px;padding:7px;background:#fffdf8;color:#173c25;font:inherit}

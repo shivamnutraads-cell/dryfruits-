@@ -118,7 +118,7 @@ const PRODUCTS = [
     id: 6,
     category: "Dry Fruits",
     name: "Premium Almonds",
-    price: 175,
+    price: 199,
     mrp: 499,
     discount: "17% OFF",
     weight: "100gm",
@@ -187,14 +187,14 @@ const PRODUCTS = [
     id: 9,
     category: "Dry Fruits",
     name: "Premium walnuts",
-    price: 395,
+    price: 199,
     mrp: 499,
     discount: "17% OFF",
-    weight: "200gm",
+    weight: "100gm",
     short: "Distinctive walnut flavour for snacks, breakfasts and baking.",
     description: "Premium Walnuts offer a rich, earthy taste and are easy to add to breakfast bowls, salads, desserts and everyday recipes. Enjoy as a snack or chop into your favourite dishes. Store in a cool, dry place and check the label for pack weight and allergen information.",
     details: [
-      "200gm pack",
+      "100gm pack",
       "Premium grade selection",
       "Resealable-style storage recommended",
       "COD available"
@@ -398,15 +398,17 @@ function productCard(p, i) {
 function isDryFruit(p) { return p && p.category === 'Dry Fruits'; }
 function packPrice(p, grams) {
   if (!isDryFruit(p)) return { price: p.price, mrp: p.mrp };
+  const size = Number(grams);
+  // Walnut prices are explicitly set to avoid the 100gm/200gm selector reversing them.
   if (/walnut/i.test(p.name)) {
-    const walnutPrices = Number(grams) === 200
-      ? { price: 395, mrp: 499 }
-      : { price: 199, mrp: 249 };
-    return walnutPrices;
+    return size === 200 ? { price: 395, mrp: 998 } : { price: 199, mrp: 499 };
   }
   const baseIs200 = /200\s*gm/i.test(p.weight);
-  const factor = baseIs200 ? Number(grams) / 200 : Number(grams) / 100;
-  return { price: Math.round(p.price * factor), mrp: Math.round(p.mrp * factor) };
+  const basePrice = baseIs200 ? Math.round(p.price / 2) : p.price;
+  const baseMrp = baseIs200 ? Math.round(p.mrp / 2) : p.mrp;
+  return size === 200
+    ? { price: Math.max(0, basePrice * 2 - 5), mrp: Math.max(0, baseMrp * 2 - 5) }
+    : { price: basePrice, mrp: baseMrp };
 }
 function updateCardPrice(id, grams) {
   const p = PRODUCTS.find(x => x.id === id); if (!p) return;
@@ -508,7 +510,7 @@ function openProduct(id) {
       document.getElementById('detailWeight').parentElement.insertAdjacentElement('beforebegin', packPicker);
     }
     packPicker.style.display = 'flex';
-    document.getElementById('detailPackSize').value = /walnut/i.test(p.name) || /200\s*gm/i.test(p.weight) ? '200' : '100';
+    document.getElementById('detailPackSize').value = '100';
     updateDetailPackPrice();
   } else if (packPicker) packPicker.style.display = 'none';
 
@@ -610,14 +612,14 @@ function changeQty(id, d) {
   }
 }
 
-function getCartSubtotal() {
-  return cart.reduce((sum, item) => sum + item.price * item.qty, 0);
+function cartSubtotal() {
+  return cart.reduce((sum, item) => sum + Number(item.price || 0) * Number(item.qty || 0), 0);
 }
-function getDeliveryFee(subtotal = getCartSubtotal()) {
-  return subtotal > 599 ? 0 : 49;
+function deliveryFee(subtotal = cartSubtotal()) {
+  return subtotal > 599 ? 0 : (subtotal > 0 ? 49 : 0);
 }
-function getOrderTotal(subtotal = getCartSubtotal()) {
-  return subtotal + getDeliveryFee(subtotal);
+function cartGrandTotal(subtotal = cartSubtotal()) {
+  return subtotal + deliveryFee(subtotal);
 }
 
 function renderCart() {
@@ -628,21 +630,18 @@ function renderCart() {
     0
   );
 
-  const subtotal = getCartSubtotal();
-  const deliveryFee = getDeliveryFee(subtotal);
-  const total = subtotal + deliveryFee;
+  const subtotal = cartSubtotal();
+  const fee = deliveryFee(subtotal);
+  const total = subtotal + fee;
 
   document.getElementById('cartCount').textContent = count;
   document.getElementById('cartTotal').textContent = money(total);
-
+  const cartBreakdown = document.getElementById('cartDeliveryBreakdown');
+  if (cartBreakdown) cartBreakdown.innerHTML = `<div class="shipping-line"><span>Subtotal</span><b>${money(subtotal)}</b></div><div class="shipping-line"><span>Delivery</span><b>${fee === 0 ? 'FREE' : money(fee)}</b></div>`;
   const ct = document.getElementById('checkoutTotal');
   if (ct) ct.textContent = money(total);
-  const cartShipping = document.getElementById('cartShipping');
-  if (cartShipping) cartShipping.textContent = deliveryFee === 0 ? 'FREE' : money(deliveryFee);
-  const checkoutShipping = document.getElementById('checkoutShipping');
-  if (checkoutShipping) checkoutShipping.textContent = deliveryFee === 0 ? 'FREE' : money(deliveryFee);
-  const checkoutSubtotal = document.getElementById('checkoutSubtotal');
-  if (checkoutSubtotal) checkoutSubtotal.textContent = money(subtotal);
+  const checkoutBreakdown = document.getElementById('checkoutDeliveryBreakdown');
+  if (checkoutBreakdown) checkoutBreakdown.innerHTML = `<div class="shipping-line"><span>Subtotal</span><b>${money(subtotal)}</b></div><div class="shipping-line"><span>Delivery</span><b>${fee === 0 ? 'FREE' : money(fee)}</b></div>`;
 
   box.innerHTML = cart.length
     ? cart.map(x => `
@@ -723,12 +722,12 @@ async function placeOrder(ev) {
   if (submitButton) { submitButton.disabled = true; submitButton.textContent = 'Submitting order…'; }
   const form = new FormData(ev.target);
   const data = Object.fromEntries(form.entries());
-  const subtotal = getCartSubtotal();
-  const deliveryFee = getDeliveryFee(subtotal);
-  const total = subtotal + deliveryFee;
+  const subtotal = cartSubtotal();
+  const shippingFee = deliveryFee(subtotal);
+  const total = subtotal + shippingFee;
   const orderRef = 'NK' + Date.now().toString().slice(-9) + Math.floor(Math.random() * 90 + 10);
   const items = cart.map(item => ({ id: item.product_id || item.id, name: item.name, weight: item.weight || '', qty: item.qty, price: item.price }));
-  const order = { ...data, order_ref: orderRef, subtotal, delivery_fee: deliveryFee, total, items, user_id: currentUser?.id || null };
+  const order = { ...data, order_ref: orderRef, total, items, user_id: currentUser?.id || null };
   let sheetSaved = false;
   let supabaseSaved = false;
   let supabaseOrderId = null;
@@ -749,7 +748,7 @@ async function placeOrder(ev) {
         notes: data.notes || '',
         items: items.map(x => `${x.name} x${x.qty} (₹${x.price})`).join(' | '),
         subtotal: subtotal,
-        delivery_fee: deliveryFee,
+        shipping_fee: shippingFee,
         total: total,
         payment_method: 'Cash on Delivery',
         status: 'new',
@@ -783,8 +782,6 @@ async function placeOrder(ev) {
         landmark: data.landmark || '',
         notes: data.notes || '',
         items,
-        subtotal,
-        delivery_fee: deliveryFee,
         total,
         status: 'new'
       }).select('id,created_at,status').single();
@@ -806,7 +803,7 @@ async function placeOrder(ev) {
   await sendOrderEmail(order);
   try {
     sessionStorage.setItem('nk_last_order', JSON.stringify({
-      order_ref: orderRef, subtotal, delivery_fee: deliveryFee, total, items, created_at: new Date().toISOString(),
+      order_ref: orderRef, total, items, created_at: new Date().toISOString(),
       status: 'new', customer_name: data.name, email: data.email,
       tracking_available: supabaseSaved
     }));
@@ -1224,33 +1221,28 @@ function setupScrollAnimations() {
     });
 }
 
-// Refresh saved walnut prices so returning visitors see the current 100gm/200gm rates.
-cart.forEach(item => {
-  if (/walnut/i.test(item.name || '')) {
-    const grams = /200\s*gm/i.test(item.weight || item.name) ? 200 : 100;
-    item.price = grams === 200 ? 395 : 199;
-    item.name = 'Premium walnuts (' + grams + 'gm)';
-    item.weight = grams + 'gm';
-    item.product_id = item.product_id || 9;
-    item.id = '9-' + grams;
-  }
-});
-if (Array.isArray(cart)) localStorage.setItem('nk_cart', JSON.stringify(cart));
-
 document.addEventListener('DOMContentLoaded', () => {
+  // Refresh any previously saved cart prices to match the current pack-size pricing.
+  cart = cart.map(item => {
+    const product = PRODUCTS.find(p => p.id === Number(item.product_id || String(item.id).split('-')[0]));
+    if (!product || !isDryFruit(product)) return item;
+    const match = String(item.id).match(/-(100|200)$/);
+    const grams = match ? match[1] : (String(item.weight || '').match(/200/) ? '200' : '100');
+    const price = packPrice(product, grams).price;
+    return { ...item, id: `${product.id}-${grams}`, product_id: product.id, name: product.name + ` (${grams}gm)`, price, weight: `${grams}gm` };
+  });
+  saveCart();
   renderProducts();
   renderCart();
   initSupabase();
 
-  document.getElementById('checkoutTotal').textContent = money(getOrderTotal());
-  const initialSubtotal = getCartSubtotal();
-  const initialFee = getDeliveryFee(initialSubtotal);
-  const checkoutSubtotalEl = document.getElementById('checkoutSubtotal');
-  const checkoutShippingEl = document.getElementById('checkoutShipping');
-  if (checkoutSubtotalEl) checkoutSubtotalEl.textContent = money(initialSubtotal);
-  if (checkoutShippingEl) checkoutShippingEl.textContent = initialFee === 0 ? 'FREE' : money(initialFee);
-  const cartShippingEl = document.getElementById('cartShipping');
-  if (cartShippingEl) cartShippingEl.textContent = initialFee === 0 ? 'FREE' : money(initialFee);
+  document.getElementById('checkoutTotal').textContent =
+    money(
+      cart.reduce(
+        (s, x) => s + x.price * x.qty,
+        0
+      )
+    );
 
   const fruitIntro = document.getElementById('nkFruitIntro');
   // Create a shower of dedicated dry-fruit illustrations (never product-packaging photos).
