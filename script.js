@@ -118,7 +118,7 @@ const PRODUCTS = [
     id: 6,
     category: "Dry Fruits",
     name: "Premium Almonds",
-    price: 199,
+    price: 175,
     mrp: 499,
     discount: "17% OFF",
     weight: "100gm",
