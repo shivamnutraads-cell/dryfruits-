@@ -1280,3 +1280,41 @@ document.addEventListener('DOMContentLoaded', () => {
 
   setupScrollAnimations();
 });
+
+
+// FARM FRESH hero gallery: smooth automatic 3-image rotation with dot controls.
+(function initHeroGallery(){
+  const gallery = document.querySelector('.hero-gallery');
+  if (!gallery) return;
+  const slides = Array.from(gallery.querySelectorAll('.hero-slide'));
+  const dots = Array.from(gallery.querySelectorAll('.hero-gallery-dot'));
+  if (slides.length < 2) return;
+  let current = Math.max(0, slides.findIndex(slide => slide.classList.contains('is-active')));
+  let timer;
+  const showSlide = (index) => {
+    current = (index + slides.length) % slides.length;
+    slides.forEach((slide, i) => {
+      slide.classList.toggle('is-active', i === current);
+      slide.setAttribute('aria-hidden', i === current ? 'false' : 'true');
+    });
+    dots.forEach((dot, i) => {
+      dot.classList.toggle('is-active', i === current);
+      if (i === current) dot.setAttribute('aria-current', 'true');
+      else dot.removeAttribute('aria-current');
+    });
+  };
+  const stop = () => { if (timer) window.clearInterval(timer); };
+  const start = () => {
+    stop();
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      timer = window.setInterval(() => showSlide(current + 1), 4000);
+    }
+  };
+  dots.forEach((dot, i) => dot.addEventListener('click', () => { showSlide(i); start(); }));
+  gallery.addEventListener('mouseenter', stop);
+  gallery.addEventListener('mouseleave', start);
+  gallery.addEventListener('focusin', stop);
+  gallery.addEventListener('focusout', start);
+  showSlide(current);
+  start();
+})();

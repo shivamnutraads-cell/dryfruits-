@@ -70,7 +70,16 @@ src="https://www.facebook.com/tr?id=1430246848704728&ev=PageView&noscript=1"
   </div>
   <div class="hero-product">
     <div class="leaf-badge">FARM<br>FRESH</div>
-    <div class="image-frame hero-frame"><img src="assets/hero.jpg" data-fallback="assets/makhana-500g.png" alt="NK Food Agro Premium Collection" class="smart-image"></div>
+    <div class="image-frame hero-frame hero-gallery" aria-label="NK Food Agro product gallery">
+      <img src="assets/hero.jpg" alt="NK Food Agro Premium Collection" class="smart-image hero-slide is-active" loading="eager">
+      <img src="assets/almonds.png" alt="Premium almonds from NK Food Agro" class="smart-image hero-slide" loading="lazy">
+      <img src="assets/cashews.png" alt="Premium cashews from NK Food Agro" class="smart-image hero-slide" loading="lazy">
+      <div class="hero-gallery-dots" aria-label="Gallery slide controls">
+        <button class="hero-gallery-dot is-active" type="button" aria-label="Show image 1" aria-current="true"></button>
+        <button class="hero-gallery-dot" type="button" aria-label="Show image 2"></button>
+        <button class="hero-gallery-dot" type="button" aria-label="Show image 3"></button>
+      </div>
+    </div>
     <div class="floating-card"><strong>Premium</strong><span>NK Food Agro</span></div>
   </div>
 </section>
