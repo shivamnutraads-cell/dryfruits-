@@ -16,9 +16,9 @@ const PRODUCTS = [
       "COD available"
     ],
     images: [
-      "assets/makhana-250g.png",
-      "assets/makhana-250g-2.png",
-      "assets/makhana-250g-3.png"
+      "assets/makhana-250g.webp",
+      "assets/makhana-250g-2.webp",
+      "assets/makhana-250g-2.webp"
     ]
   },
 
@@ -39,9 +39,9 @@ const PRODUCTS = [
       "COD available"
     ],
     images: [
-      "assets/makhana-500g.png",
-      "assets/makhana-500g-2.png",
-      "assets/makhana-500g-3.png"
+      "assets/makhana-500g.webp",
+      "assets/makhana-500g-2.webp",
+      "assets/makhana-500g-3.webp"
     ]
   },
 
@@ -62,9 +62,9 @@ const PRODUCTS = [
       "COD available"
     ],
     images: [
-      "assets/makhana-combo.png",
-      "assets/makhana-combo-2.png",
-      "assets/makhana-combo-3.png"
+      "assets/makhana-combo.webp",
+      "assets/makhana-combo-2.webp",
+      "assets/makhana-combo-3.webp"
     ]
   },
 
@@ -85,9 +85,9 @@ const PRODUCTS = [
       "COD available"
     ],
     images: [
-      "assets/makhana-peri.png",
-      "assets/makhana-peri-2.png",
-      "assets/makhana-peri-3.png"
+      "assets/makhana-peri.webp",
+      "assets/makhana-peri-2.webp",
+      "assets/makhana-peri-3.webp"
     ]
   },
 
@@ -108,9 +108,9 @@ const PRODUCTS = [
       "COD available"
     ],
     images: [
-      "assets/makhana-cream.png",
-      "assets/makhana-cream-2.png",
-      "assets/makhana-cream-3.png"
+      "assets/makhana-cream.webp",
+      "assets/makhana-cream-2.webp",
+      "assets/makhana-cream-3.webp"
     ]
   },
 
@@ -131,9 +131,9 @@ const PRODUCTS = [
       "COD available"
     ],
     images: [
-      "assets/almonds.png",
-      "assets/almonds-2.png",
-      "assets/almonds-3.png"
+      "assets/almonds.webp",
+      "assets/almonds-2.webp",
+      "assets/almonds-3.webp"
     ]
   },
 
@@ -154,9 +154,9 @@ const PRODUCTS = [
       "COD available"
     ],
     images: [
-      "assets/cashews.png",
-      "assets/cashews-2.png",
-      "assets/cashews-3.png"
+      "assets/cashews.webp",
+      "assets/cashews-2.webp",
+      "assets/cashews-3.webp"
     ]
   },
 
@@ -177,9 +177,9 @@ const PRODUCTS = [
       "COD available"
     ],
     images: [
-      "assets/dry-fruits-mix.png",
-      "assets/dry-fruits-mix-2.png",
-      "assets/dry-fruits-mix-3.png"
+      "assets/dry-fruits-mix.webp",
+      "assets/dry-fruits-mix-2.webp",
+      "assets/dry-fruits-mix-3.webp"
     ]
   },
 
@@ -200,9 +200,9 @@ const PRODUCTS = [
       "COD available"
     ],
     images: [
-      "assets/walnuts.png",
-      "assets/walnuts-2.png",
-      "assets/walnuts-3.png"
+      "assets/walnuts.webp",
+      "assets/walnuts-2.webp",
+      "assets/walnuts-3.webp"
     ]
   },
 
@@ -223,9 +223,9 @@ const PRODUCTS = [
       "COD available"
     ],
     images: [
-      "assets/royal-hamper.png",
-      "assets/royal-hamper-2.png",
-      "assets/royal-hamper-3.png"
+      "assets/royal-hamper.webp",
+      "assets/royal-hamper-2.webp",
+      "assets/royal-hamper-3.webp"
     ]
   },
 
@@ -246,9 +246,9 @@ const PRODUCTS = [
       "COD available"
     ],
     images: [
-      "assets/festive-hamper.png",
-      "assets/festive-hamper-2.png",
-      "assets/festive-hamper-3.png"
+      "assets/festive-hamper.webp",
+      "assets/festive-hamper-2.webp",
+      "assets/festive-hamper-3.webp"
     ]
   },
 
@@ -269,9 +269,9 @@ const PRODUCTS = [
       "COD available"
     ],
     images: [
-      "assets/celebration-hamper.png",
-      "assets/celebration-hamper-2.png",
-      "assets/celebration-hamper-3.png"
+      "assets/celebration-hamper.webp",
+      "assets/celebration-hamper-2.webp",
+      "assets/celebration-hamper-3.webp"
     ]
   }
 ];
@@ -1249,8 +1249,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const rainLayer = document.getElementById('nkfiRain');
   if (rainLayer && !rainLayer.dataset.ready) {
     rainLayer.dataset.ready = '1';
-    const fruitAssets = ['assets/falling-almond.png', 'assets/falling-cashew.png', 'assets/falling-pistachio.png', 'assets/falling-walnut.png', 'assets/falling-raisins.png', 'assets/falling-makhana.png', 'assets/falling-fig.png', 'assets/falling-dates.png'];
-    for (let i = 0; i < 64; i++) {
+    const fruitAssets = ['assets/falling-almond.webp', 'assets/falling-cashew.webp', 'assets/falling-pistachio.webp', 'assets/falling-walnut.webp', 'assets/falling-raisins.webp', 'assets/falling-makhana.webp', 'assets/falling-fig.webp', 'assets/falling-dates.webp'];
+    for (let i = 0; i < 24; i++) {
       const item = document.createElement('img');
       item.className = 'nkfi-rain-item';
       const seed = (i * 37 + 13) % 100;
@@ -1263,7 +1263,8 @@ document.addEventListener('DOMContentLoaded', () => {
       item.style.setProperty('--spin', (((i * 43) % 360) + 260) + 'deg');
       item.src = fruitAssets[i % fruitAssets.length];
       item.alt = '';
-      item.loading = 'eager';
+      item.loading = 'lazy';
+      item.decoding = 'async';
       rainLayer.appendChild(item);
     }
   }
@@ -1276,7 +1277,7 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout(() => fruitIntro.remove(), 750);
   };
   document.getElementById('nkFruitSkip')?.addEventListener('click', hideFruitIntro);
-  setTimeout(hideFruitIntro, 4200);
+  setTimeout(hideFruitIntro, 2200);
 
   setupScrollAnimations();
 });

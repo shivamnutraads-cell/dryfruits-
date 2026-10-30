@@ -98,9 +98,9 @@ Never put a Supabase service_role key in this website. Use only the anon/public 
 CUSTOM JAR IMAGES (FRONT INTRO)
 --------------------------------
 The old decorative jar pictures are no longer used. Upload your own transparent PNG images into the assets folder with these exact names:
-- assets/custom-jar-left.png
-- assets/custom-jar-right.png
-- assets/custom-jar-small.png
+- assets/custom-jar-left.webp
+- assets/custom-jar-right.webp
+- assets/custom-jar-small.webp
 
 If a file has not been uploaded yet, that jar spot stays hidden rather than showing an old or unrelated image. You can upload just one or all three.
 
