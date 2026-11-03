@@ -214,13 +214,15 @@ const PRODUCTS = [
     mrp: 1999,
     discount: "27.46% OFF",
     weight: "Premium Gift Box",
-    short: "A premium dry-fruit gift hamper for celebrations and thoughtful gifting.",
-    description: "A beautifully presented dry-fruit hamper designed for festive occasions, family celebrations and corporate-style gifting.",
+    short: "A premium gift hamper with 630gm of carefully selected dry fruits.",
+    description: "The Royal Dry Fruit Hamper brings together walnuts, almonds, mixed dry fruits and cashews in a beautiful gift box. A thoughtful choice for festivals, family celebrations and special occasions.",
     details: [
-      "Premium gift presentation",
-      "Curated dry-fruit assortment",
-      "Occasion-ready packaging",
-      "COD available"
+      "Walnuts – 140gm",
+      "Almonds (Badam) – 180gm",
+      "Mixed Dry Fruits – 150gm",
+      "Cashews (Kaju) – 160gm",
+      "Total dry fruits – 630gm",
+      "Premium gift-ready packaging"
     ],
     images: [
       "assets/royal-hamper.webp",
@@ -237,13 +239,13 @@ const PRODUCTS = [
     mrp: 1299,
     discount: "38.41% OFF",
     weight: "Gift Pack",
-    short: "A festive gift set for makhana lovers and snack-time sharing.",
-    description: "A festive hamper concept built around premium makhana, presented to make gifting simple, warm and memorable.",
+    short: "A festive gift hamper with 340gm of premium dry fruits.",
+    description: "The Festive Makhana Hamper includes crunchy cashews and premium almonds, beautifully packed for festive gifting and sharing with family and friends.",
     details: [
-      "Makhana-focused gift pack",
-      "Festive presentation",
-      "Ready-to-gift concept",
-      "COD available"
+      "Cashews (Kaju) – 160gm",
+      "Almonds (Badam) – 180gm",
+      "Total dry fruits – 340gm",
+      "Festive gift-ready packaging"
     ],
     images: [
       "assets/festive-hamper.webp",
@@ -260,13 +262,15 @@ const PRODUCTS = [
     mrp: 1899,
     discount: "27.03% OFF",
     weight: "Luxury Gift Box",
-    short: "A celebration-ready hamper for family, friends and special occasions.",
-    description: "A premium assortment curated for birthdays, festivals, family occasions and special thank-you gifts.",
+    short: "A celebration hamper with 630gm of premium dry fruits, perfect for gifting.",
+    description: "The Premium Celebration Hamper features a balanced assortment of walnuts, almonds, mixed dry fruits and cashews. A thoughtful premium gift for birthdays, festivals and family celebrations.",
     details: [
-      "Luxury-style gift box",
-      "Curated assortment",
-      "Celebration-ready",
-      "COD available"
+      "Walnuts – 140gm",
+      "Almonds (Badam) – 180gm",
+      "Mixed Dry Fruits – 150gm",
+      "Cashews (Kaju) – 160gm",
+      "Total dry fruits – 630gm",
+      "Premium celebration gift packaging"
     ],
     images: [
       "assets/celebration-hamper.webp",
